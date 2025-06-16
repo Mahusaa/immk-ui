@@ -1,103 +1,124 @@
+
+import React from "react";
 import Image from "next/image";
+import { ChevronDown } from 'lucide-react';
+import Navbar from './components/Navbar';
+import { Footer } from "./components/footer";
+import { Gallery } from "./components/gallery";
+import { Programs } from "./components/programs";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="text-gray-900 bg-white">
+      <Navbar />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+      <svg width="0" height="0" style={{ position: 'absolute' }}>
+        <defs>
+          <filter id="noiseFilter">
+            <feTurbulence
+              baseFrequency="0.9"
+              numOctaves="3"
+              seed="1"
+              stitchTiles="stitch"
             />
-            Deploy now
-          </a>
+            <feColorMatrix type="saturate" values="0" />
+            <feBlend in="SourceGraphic" mode="multiply" />
+          </filter>
+        </defs>
+      </svg>
+
+
+
+      {/* Hero Section */}
+      <section
+        id="home"
+        className="relative h-screen w-full overflow-hidden flex items-center justify-center pt-16"
+      >
+        {/* Background image with noise filter */}
+        <div className="absolute inset-0">
+          <Image
+            src="/balai_sidang.jpg"
+            alt="Balai Sidang"
+            fill
+            priority
+            className="object-cover object-center brightness-50"
+            style={{ filter: 'url(#noiseFilter)' }}
+          />
+        </div>
+
+        {/* Orange gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0A2463]/80 via-[#F34213]/80 to-[#0A2463]/80" />
+
+
+        {/* Hero content */}
+        <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6 max-w-5xl mx-auto">
+          <h1 className="text-white text-4xl md:text-6xl xl:text-7xl font-extrabold mb-8 leading-tight drop-shadow-lg">
+            Ikatan Mahasiswa Magister Kenotariatan
+          </h1>
+          <div className="w-20 h-1 bg-gradient-to-r from-white to-gray-300 mx-auto mb-8 rounded-full"></div>
+          <p className="text-white text-lg md:text-2xl max-w-3xl mx-auto mb-10 leading-relaxed">
+            Pusat Informasi Mahasiswa Magister Kenotariatan Universitas Indonesia
+          </p>
           <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#about"
+            className="inline-flex items-center gap-3 px-10 py-4 bg-white/20 text-white font-semibold rounded-full shadow-lg hover:bg-white/30 transition-all duration-300 hover:scale-105 animate-bounce"
           >
-            Read our docs
+            <ChevronDown className="w-8 h-8" />
           </a>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+        {/* Floating elements for visual interest */}
+        <div className="absolute top-1/4 left-10 w-2 h-2 bg-orange-500/40 rounded-full animate-pulse"></div>
+        <div className="absolute top-1/3 right-16 w-3 h-3 bg-red-400/30 rounded-full animate-pulse delay-1000"></div>
+        <div className="absolute bottom-1/4 left-1/4 w-1 h-1 bg-orange-400/50 rounded-full animate-pulse delay-500"></div>
+      </section>
+
+
+
+      {/* About Section */}
+      <section id="about" className="pt-16 pb-24 px-6 max-w-5xl mx-auto bg-white">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-5xl font-bold mb-6 text-[#0A2463]">Tentang Kami</h2>
+          <div className="w-20 h-1 bg-[#F04E23] mx-auto mb-6"></div>
+          <p className="text-lg leading-relaxed text-gray-600 max-w-3xl mx-auto">
+            IMM K adalah organisasi mahasiswa yang berkomitmen untuk mengembangkan potensi mahasiswa Magister Kenotariatan
+            melalui berbagai program yang mendukung pengembangan akademik, profesional, dan sosial.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-8 mt-16">
+          {[
+            {
+              title: "Visi",
+              desc: "Menjadi wadah pengembangan diri yang unggul bagi mahasiswa Magister Kenotariatan.",
+              icon: "🎯",
+              color: "bg-orange-50 text-[#F04E23]"
+            },
+            {
+              title: "Misi",
+              desc: "Mengadakan program pengembangan kapasitas, membangun jejaring, dan berkontribusi pada masyarakat.",
+              icon: "✨",
+              color: "bg-orange-50 text-[#F04E23]"
+            },
+            {
+              title: "Nilai",
+              desc: "Integritas, Kolaborasi, Inovasi, dan Kepedulian Sosial menjadi landasan setiap kegiatan kami.",
+              icon: "💎",
+              color: "bg-orange-50 text-[#F04E23]"
+            }
+          ].map((item, index) => (
+            <div key={index} className={`p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 ${item.color} hover:-translate-y-1`}>
+              <div className="text-3xl mb-4">{item.icon}</div>
+              <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
+              <p className="text-gray-600">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <Programs />
+      <Gallery />
+      <Footer />
     </div>
   );
 }

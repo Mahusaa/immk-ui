@@ -1,7 +1,11 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #FFFFFF;
+  --coquelicot: #F34213;
+  --royal-blue: #0A2463;
+  --brand-black: #000000;
+  --brand-white: #FFFFFF;
   --foreground: #171717;
 }
 
@@ -12,12 +16,7 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+/* Clean light theme only */
 
 body {
   background: var(--background);
