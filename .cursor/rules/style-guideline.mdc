@@ -1,0 +1,68 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# 🎨 Design Guideline 
+
+Keep this simple. Clean. Consistent. Here’s everything you need in one place:
+
+---
+
+## ✅ Brand Colors
+
+| Role         | Name        | HEX        | Preview |
+|--------------|-------------|------------|---------|
+| Primary      | Royal Blue  | `#0A2463`  | ![#0A2463](https://via.placeholder.com/15/0A2463/000000?text=+) |
+| Accent       | Coquelicot  | `#F34213`  | ![#F34213](https://via.placeholder.com/15/F34213/000000?text=+) |
+| Background   | White       | `#F2F2F2`  | ![#F2F2F2](https://via.placeholder.com/15/F2F2F2/000000?text=+) |
+| Text/Base    | Black       | `#000000`  | ![#000000](https://via.placeholder.com/15/000000/FFFFFF?text=+) |
+
+---
+
+## 🌗 Shades & Tints
+
+### 🔵 Blue Scale (for gradients or emphasis)
+```
+#040e25 → #4578eb
+```
+
+### 🔴 Orange Scale (for warning/CTA)
+```
+#3A0F03 → #F47451
+```
+
+Use darker tones for hover/focus, and lighter ones for background or borders.
+
+---
+
+## 🅰 Typography
+
+### Primary Font: **Montserrat**
+- Light / Regular / Medium / Bold
+
+### Secondary Font: **Butler**
+- Light / Regular / Medium / Bold
+
+**Usage Tips:**
+- 📝 Headings: Butler Bold or Montserrat Bold  
+- 📄 Body Text: Montserrat Regular  
+- 🧭 CTA Buttons: Montserrat Medium  
+
+---
+
+## 🔁 Quick Rules
+
+- ✅ Use only the colors above.
+- ✅ Stick to 2 font families max.
+- ❌ Don’t add shadows unless defined.
+- ✅ Keep spacing consistent.
+- ✅ Use high contrast between text and background.
+
+---
+
+## 🧠 Tone & Feel
+
+Modern, bold, and clean.  
+Think: **professional meets creative campaign**.
+

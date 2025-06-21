@@ -82,7 +82,7 @@ export const Gallery = () => {
   return (
     <section
       id="gallery"
-      className="py-24 px-4 sm:px-6 max-w-6xl mx-auto bg-white overflow-hidden"
+      className="py-24 px-4 sm:px-6 max-w-6xl mx-auto bg-white overflow-hidden scroll-mt-20"
     >
       <div className="text-center mb-12">
         <h2 className="text-3xl md:text-5xl font-bold mb-6 text-[#0A2463]">Galeri</h2>

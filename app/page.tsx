@@ -1,5 +1,4 @@
 import React from "react";
-import Navbar from './components/Navbar';
 import { Footer } from "./components/footer";
 import { Gallery } from "./components/gallery";
 import { Programs } from "./components/programs";
@@ -9,8 +8,8 @@ import { TimelineSection } from "./components/TimelineSection";
 
 export default function Home() {
   return (
-    <div className="text-gray-900 bg-white">
-      <Navbar />
+    <div className="text-gray-900 bg-white pt-16">
+
 
       <svg width="0" height="0" style={{ position: 'absolute' }}>
         <defs>
