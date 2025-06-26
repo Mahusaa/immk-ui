@@ -12,6 +12,7 @@ const aboutDropdown = [
 const navLinks = [
   { name: 'Home', href: '/' },
   { name: 'About', href: '#about', dropdown: aboutDropdown },
+  { name: 'Organization', href: '#organization' },
   { name: 'Programs', href: '#programs' },
   { name: 'Gallery', href: '#gallery' },
   { name: 'Timeline', href: '#timeline' },

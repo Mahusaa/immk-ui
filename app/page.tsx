@@ -5,6 +5,8 @@ import { Programs } from "./components/programs";
 import { HeroSection } from "./components/HeroSection";
 import { AboutSection } from "./components/AboutSection";
 import { TimelineSection } from "./components/TimelineSection";
+import { OrganizationStructure } from "./components/OrganizationStructure";
+import MKNGuide from "./components/MKNGuide";
 
 export default function Home() {
   return (
@@ -28,6 +30,8 @@ export default function Home() {
 
       <HeroSection />
       <AboutSection />
+      <OrganizationStructure />
+      <MKNGuide />
       <TimelineSection />
       <Programs />
       <Gallery />
