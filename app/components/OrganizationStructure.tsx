@@ -277,7 +277,7 @@ export const OrganizationStructure = () => {
                 <div className="font-bold text-[#0A2463] text-lg mb-6 text-center font-montserrat leading-tight">
                   {divisi.name}
                 </div>
-                {/* Row for Kepala & Wakil */}
+                {/* Row for Kepala & Wakil(s) */}
                 <div className="flex flex-row justify-center items-stretch gap-6 w-full flex-1">
                   {/* Kepala */}
                   <div className="flex flex-col items-center flex-1 justify-center">
@@ -296,22 +296,26 @@ export const OrganizationStructure = () => {
                       {divisi.kepala}
                     </span>
                   </div>
-                  {/* Wakil */}
-                  <div className="flex flex-col items-center flex-1 justify-center">
-                    <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden bg-gray-100 border-2 border-[#F34213] mb-2">
-                      <Image
-                        src={divisi.wakilImage || '/immk-logo.jpeg'}
-                        alt={`Foto Wakil ${divisi.name}`}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                    <span className="text-[11px] font-semibold text-[#F34213] uppercase tracking-wide font-montserrat mb-1">
-                      Wakil Kepala
-                    </span>
-                    <span className="text-sm text-black font-montserrat text-center break-words">
-                      {divisi.wakil}
-                    </span>
+                  {/* Wakil(s) */}
+                  <div className={`flex flex-row gap-4 items-center flex-1 justify-center`}>
+                    {[divisi.wakil].flat().map((wakil, idx) => (
+                      <div key={wakil} className="flex flex-col items-center">
+                        <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden bg-gray-100 border-2 border-[#F34213] mb-2">
+                          <Image
+                            src={Array.isArray(divisi.wakilImage) ? divisi.wakilImage[idx] : divisi.wakilImage || '/immk-logo.jpeg'}
+                            alt={`Foto Wakil ${divisi.name}`}
+                            fill
+                            className="object-cover"
+                          />
+                        </div>
+                        <span className="text-[11px] font-semibold text-[#F34213] uppercase tracking-wide font-montserrat mb-1">
+                          Wakil Kepala
+                        </span>
+                        <span className="text-sm text-black font-montserrat text-center break-words">
+                          {wakil}
+                        </span>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -362,7 +366,7 @@ export const OrganizationStructure = () => {
                 <div className="font-bold text-[#0A2463] text-lg mb-6 text-center font-montserrat leading-tight">
                   {divisi.name}
                 </div>
-                {/* Row for Kepala & Wakil */}
+                {/* Row for Kepala & Wakil(s) */}
                 <div className="flex flex-row justify-center items-stretch gap-6 w-full flex-1">
                   {/* Kepala */}
                   <div className="flex flex-col items-center flex-1 justify-center">
@@ -381,22 +385,26 @@ export const OrganizationStructure = () => {
                       {divisi.kepala}
                     </span>
                   </div>
-                  {/* Wakil */}
-                  <div className="flex flex-col items-center flex-1 justify-center">
-                    <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden bg-gray-100 border-2 border-[#F34213] mb-2">
-                      <Image
-                        src={divisi.wakilImage || '/immk-logo.jpeg'}
-                        alt={`Foto Wakil ${divisi.name}`}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                    <span className="text-[11px] font-semibold text-[#F34213] uppercase tracking-wide font-montserrat mb-1">
-                      Wakil Kepala
-                    </span>
-                    <span className="text-sm text-black font-montserrat text-center break-words">
-                      {divisi.wakil}
-                    </span>
+                  {/* Wakil(s) */}
+                  <div className={`flex flex-row gap-4 items-center flex-1 justify-center`}>
+                    {[divisi.wakil].flat().map((wakil, idx) => (
+                      <div key={wakil} className="flex flex-col items-center">
+                        <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden bg-gray-100 border-2 border-[#F34213] mb-2">
+                          <Image
+                            src={Array.isArray(divisi.wakilImage) ? divisi.wakilImage[idx] : divisi.wakilImage || '/immk-logo.jpeg'}
+                            alt={`Foto Wakil ${divisi.name}`}
+                            fill
+                            className="object-cover"
+                          />
+                        </div>
+                        <span className="text-[11px] font-semibold text-[#F34213] uppercase tracking-wide font-montserrat mb-1">
+                          Wakil Kepala
+                        </span>
+                        <span className="text-sm text-black font-montserrat text-center break-words">
+                          {wakil}
+                        </span>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -445,49 +453,92 @@ export const OrganizationStructure = () => {
                 <div className="font-bold text-[#0A2463] text-lg mb-6 text-center font-montserrat leading-tight">
                   {divisi.name}
                 </div>
-                {/* Row for Kepala & Wakil */}
-                <div className="flex flex-col sm:flex-row justify-center items-stretch gap-6 w-full flex-1">
-                  {/* Kepala */}
-                  <div className="flex flex-col items-center flex-1 justify-center">
-                    <div className="relative w-16 h-16 rounded-full overflow-hidden bg-gray-100 border-2 border-[#0A2463] mb-2 aspect-square">
-                      <Image
-                        src={divisi.kepalaImage || '/immk-logo.jpeg'}
-                        alt={`Foto Kepala ${divisi.name}`}
-                        fill
-                        className="object-cover"
-                        onError={(e) => { e.currentTarget.src = '/immk-logo.jpeg'; }}
-                      />
-                    </div>
-                    <span className="text-xs font-semibold text-[#F34213] uppercase tracking-wide font-montserrat mb-1">
-                      Kepala Divisi
-                    </span>
-                    <span className="text-sm text-black font-montserrat text-center break-words">
-                      {divisi.kepala}
-                    </span>
-                  </div>
-                  {/* Wakil */}
-                  <div className={`flex ${divisi.wakil.length > 1 ? 'flex-row gap-4' : 'flex-col'} items-center flex-1 justify-center`}>
-                    {divisi.wakil.map((wakil, idx) => (
-                      <div key={wakil} className="flex flex-col items-center">
-                        <div className="relative w-16 h-16 rounded-full overflow-hidden bg-gray-100 border-2 border-[#F34213] mb-2 aspect-square">
-                          <Image
-                            src={divisi.wakilImage?.[idx] || '/immk-logo.jpeg'}
-                            alt={`Foto Wakil ${divisi.name}`}
-                            fill
-                            className="object-cover"
-                            onError={(e) => { e.currentTarget.src = '/immk-logo.jpeg'; }}
-                          />
-                        </div>
-                        <span className="text-xs font-semibold text-[#F34213] uppercase tracking-wide font-montserrat mb-1">
-                          Wakil Kepala
-                        </span>
-                        <span className="text-sm text-black font-montserrat text-center break-words">
-                          {wakil}
-                        </span>
+                {/* Row for Kepala & Wakil(s) */}
+                {Array.isArray(divisi.wakil) && divisi.wakil.length === 2 ? (
+                  <div className="flex flex-row justify-center items-stretch gap-8 w-full flex-1">
+                    {/* Kepala */}
+                    <div className="flex flex-col items-center flex-1 justify-center">
+                      <div className="relative w-16 h-16 rounded-full overflow-hidden bg-gray-100 border-2 border-[#0A2463] mb-2 aspect-square">
+                        <Image
+                          src={divisi.kepalaImage || '/immk-logo.jpeg'}
+                          alt={`Foto Kepala ${divisi.name}`}
+                          fill
+                          className="object-cover"
+                        />
                       </div>
-                    ))}
+                      <span className="text-xs font-semibold text-[#F34213] uppercase tracking-wide font-montserrat mb-1">
+                        Kepala Divisi
+                      </span>
+                      <span className="text-sm text-black font-montserrat text-center break-words">
+                        {divisi.kepala}
+                      </span>
+                    </div>
+                    {/* Divider for visual separation */}
+                    <div className="w-px bg-[#0A2463]/20 mx-2" />
+                    {/* Wakil(s) Group */}
+                    <div className="flex flex-col gap-4 flex-1 items-center justify-center">
+                      {divisi.wakil.map((wakil: string, idx: number) => (
+                        <div key={wakil} className="flex flex-col items-center">
+                          <div className="relative w-16 h-16 rounded-full overflow-hidden bg-gray-100 border-2 border-[#F34213] mb-2 aspect-square">
+                            <Image
+                              src={divisi.wakilImage?.[idx] || '/immk-logo.jpeg'}
+                              alt={`Foto Wakil ${divisi.name}`}
+                              fill
+                              className="object-cover"
+                            />
+                          </div>
+                          <span className="text-xs font-semibold text-[#F34213] uppercase tracking-wide font-montserrat mb-1">
+                            Wakil Kepala
+                          </span>
+                          <span className="text-sm text-black font-montserrat text-center break-words">
+                            {wakil}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                </div>
+                ) : (
+                  <div className="flex flex-row gap-4 items-center w-full flex-1 justify-center">
+                    {/* Kepala */}
+                    <div className="flex flex-col items-center flex-1 justify-center">
+                      <div className="relative w-16 h-16 rounded-full overflow-hidden bg-gray-100 border-2 border-[#0A2463] mb-2 aspect-square">
+                        <Image
+                          src={divisi.kepalaImage || '/immk-logo.jpeg'}
+                          alt={`Foto Kepala ${divisi.name}`}
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                      <span className="text-xs font-semibold text-[#F34213] uppercase tracking-wide font-montserrat mb-1">
+                        Kepala Divisi
+                      </span>
+                      <span className="text-sm text-black font-montserrat text-center break-words">
+                        {divisi.kepala}
+                      </span>
+                    </div>
+                    {/* Wakil(s) */}
+                    <div className={`flex flex-row gap-4 items-center flex-1 justify-center`}>
+                      {divisi.wakil.map((wakil: string, idx: number) => (
+                        <div key={wakil} className="flex flex-col items-center">
+                          <div className="relative w-16 h-16 rounded-full overflow-hidden bg-gray-100 border-2 border-[#F34213] mb-2 aspect-square">
+                            <Image
+                              src={divisi.wakilImage?.[idx] || '/immk-logo.jpeg'}
+                              alt={`Foto Wakil ${divisi.name}`}
+                              fill
+                              className="object-cover"
+                            />
+                          </div>
+                          <span className="text-xs font-semibold text-[#F34213] uppercase tracking-wide font-montserrat mb-1">
+                            Wakil Kepala
+                          </span>
+                          <span className="text-sm text-black font-montserrat text-center break-words">
+                            {wakil}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
             ))}
           </div>
@@ -535,8 +586,8 @@ export const OrganizationStructure = () => {
                 <div className="font-bold text-[#0A2463] text-lg mb-6 text-center font-montserrat leading-tight">
                   {divisi.name}
                 </div>
-                {/* Row for Kepala & Wakil */}
-                <div className="flex flex-col sm:flex-row justify-center items-stretch gap-6 w-full flex-1">
+                {/* Row for Kepala & Wakil(s) */}
+                <div className="flex flex-row justify-center items-stretch gap-6 w-full flex-1">
                   {/* Kepala */}
                   <div className="flex flex-col items-center flex-1 justify-center">
                     <div className="relative w-16 h-16 rounded-full overflow-hidden bg-gray-100 border-2 border-[#0A2463] mb-2 aspect-square">
@@ -545,7 +596,6 @@ export const OrganizationStructure = () => {
                         alt={`Foto Kepala ${divisi.name}`}
                         fill
                         className="object-cover"
-                        onError={(e) => { e.currentTarget.src = '/immk-logo.jpeg'; }}
                       />
                     </div>
                     <span className="text-xs font-semibold text-[#F34213] uppercase tracking-wide font-montserrat mb-1">
@@ -555,8 +605,8 @@ export const OrganizationStructure = () => {
                       {divisi.kepala}
                     </span>
                   </div>
-                  {/* Wakil */}
-                  <div className={`flex ${divisi.wakil.length > 1 ? 'flex-row gap-4' : 'flex-col'} items-center flex-1 justify-center`}>
+                  {/* Wakil(s) */}
+                  <div className={`flex flex-row gap-4 items-center flex-1 justify-center`}>
                     {divisi.wakil.map((wakil, idx) => (
                       <div key={wakil} className="flex flex-col items-center">
                         <div className="relative w-16 h-16 rounded-full overflow-hidden bg-gray-100 border-2 border-[#F34213] mb-2 aspect-square">
@@ -565,7 +615,6 @@ export const OrganizationStructure = () => {
                             alt={`Foto Wakil ${divisi.name}`}
                             fill
                             className="object-cover"
-                            onError={(e) => { e.currentTarget.src = '/immk-logo.jpeg'; }}
                           />
                         </div>
                         <span className="text-xs font-semibold text-[#F34213] uppercase tracking-wide font-montserrat mb-1">

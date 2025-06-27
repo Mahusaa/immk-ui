@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 
 const aboutDropdown = [
-  { name: 'Visi & Misi', href: '#about' },
+  { name: 'Visi & Misi', href: '/#about' },
   { name: 'Organization', href: '/organization' },
   { name: 'MKN UI GUIDE', href: '/mkn-guide' },
 ];
@@ -12,15 +12,14 @@ const aboutDropdown = [
 const navLinks = [
   { name: 'Home', href: '/' },
   { name: 'About', href: '#about', dropdown: aboutDropdown },
-  { name: 'Programs', href: '#programs' },
-  { name: 'Gallery', href: '#gallery' },
-  { name: 'Timeline', href: '#timeline' },
+  { name: 'Programs', href: '/#programs' },
+  { name: 'Gallery', href: '/#gallery' },
 ];
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [dropdownHover, setDropdownHover] = useState(false); // Track hover for About dropdown
+  const [dropdownHover, setDropdownHover] = useState(false);
 
   // Close dropdown when menu closes
   useEffect(() => {
@@ -67,6 +66,7 @@ export default function Navbar() {
           <Image src="/immk-logo.jpeg" alt="IMMK Logo" width={40} height={40} className="rounded-full bg-white p-1 sm:w-12 sm:h-12 w-10 h-10" />
           <span className="font-bold text-xl text-white font-montserrat uppercase tracking-wide ml-1 sm:ml-2">IMMK UI</span>
         </Link>
+
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center space-x-6">
           {navLinks.map((link) => (
@@ -112,65 +112,94 @@ export default function Navbar() {
             </div>
           ))}
         </nav>
+
         {/* Mobile Menu Button */}
         <div className="md:hidden">
-          <button onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Close menu' : 'Open menu'} aria-expanded={menuOpen} className="p-2 text-white focus:outline-none focus:ring-2 focus:ring-[#F34213]">
+          <button onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Close menu' : 'Open menu'} aria-expanded={menuOpen} className="p-2 text-white focus:outline-none focus:ring-2 focus:ring-[#F34213] rounded-md">
             {menuOpen ? (
-              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+              <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" /></svg>
             ) : (
-              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" /></svg>
+              <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4 6h16M4 12h16m-7 6h7" /></svg>
             )}
           </button>
         </div>
       </div>
-      {/* Mobile Menu Overlay */}
+
+      {/* Mobile Menu Overlay - Enhanced Design */}
       {menuOpen && (
-        <div className="fixed inset-0 bg-[#0A2463]/95 z-50 flex flex-col">
-          <div className="flex justify-end p-4">
-            <button onClick={() => setMenuOpen(false)} aria-label="Close menu" className="text-white p-2 focus:outline-none focus:ring-2 focus:ring-[#F34213]">
-              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+        <div className="fixed inset-0 bg-gradient-to-br from-[#0A2463] via-[#0F2A5C] to-[#142E55] z-50 flex flex-col">
+          {/* Header with Close Button */}
+          <div className="flex items-center justify-between px-6 py-5 border-b border-white/10">
+            <div className="flex items-center space-x-3">
+              <Image src="/immk-logo.jpeg" alt="IMMK Logo" width={32} height={32} className="rounded-full bg-white p-0.5" />
+              <span className="font-bold text-lg text-white font-montserrat uppercase tracking-wide">IMMK UI</span>
+            </div>
+            <button onClick={() => setMenuOpen(false)} aria-label="Close menu" className="text-white p-2 rounded-md hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-[#F34213] transition-colors">
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" /></svg>
             </button>
           </div>
-          <nav className="flex flex-col items-start mt-4 space-y-2 w-full px-6"> {/* align left */}
-            {navLinks.map((link) => (
-              <div key={link.name} className="w-full flex flex-col items-start">
-                {link.dropdown ? (
-                  <>
-                    <button
-                      onClick={() => setDropdownOpen(dropdownOpen ? false : true)}
-                      aria-expanded={dropdownOpen}
-                      className="w-full flex justify-between items-center px-0 py-4 text-white font-bold uppercase rounded-md bg-transparent hover:bg-[#F34213]/80 focus:outline-none focus:ring-2 focus:ring-[#F34213] text-left"
-                    >
-                      <span>{link.name}</span>
-                      <svg className={`w-6 h-6 fill-current transition-transform duration-200 ${dropdownOpen ? 'rotate-180' : ''}`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
-                    </button>
-                    {dropdownOpen && (
-                      <div className="w-full bg-[#183B6B] bg-opacity-90 backdrop-blur rounded-xl shadow-xl z-50 border-none mt-2">
-                        <div className="py-2">
-                          {link.dropdown.map((item) => (
-                            <Link key={item.name} href={item.href} onClick={(e) => { handleLinkClick(e, item.href); setDropdownOpen(false); }} className="block px-6 py-3 text-white font-montserrat font-medium rounded-lg hover:bg-[#F34213]/10 hover:text-[#F34213] focus:bg-[#F34213]/20 focus:text-[#F34213] focus:outline-none text-left">
-                              {item.name}
+
+          {/* Navigation Menu */}
+          <nav className="flex-1 overflow-y-auto px-6 py-8">
+            <div className="space-y-2">
+              {navLinks.map((link, index) => (
+                <div key={link.name} className="w-full">
+                  {link.dropdown ? (
+                    <>
+                      <button
+                        onClick={() => setDropdownOpen(!dropdownOpen)}
+                        aria-expanded={dropdownOpen}
+                        className="w-full flex items-center justify-between px-4 py-4 text-white font-montserrat font-semibold text-lg uppercase tracking-wide rounded-xl bg-white/5 hover:bg-[#F34213]/20 active:bg-[#F34213]/30 focus:outline-none focus:ring-2 focus:ring-[#F34213] transition-all duration-200 border border-white/10 hover:border-[#F34213]/30"
+                      >
+                        <span className="flex items-center space-x-3">
+                          <span className="w-2 h-2 bg-[#F34213] rounded-full"></span>
+                          <span>{link.name}</span>
+                        </span>
+                        <svg className={`w-5 h-5 fill-current transition-transform duration-300 ${dropdownOpen ? 'rotate-180' : ''}`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                          <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                        </svg>
+                      </button>
+
+                      {/* Dropdown Items with Animation */}
+                      <div className={`overflow-hidden transition-all duration-300 ease-in-out ${dropdownOpen ? 'max-h-96 opacity-100 mt-3' : 'max-h-0 opacity-0'}`}>
+                        <div className="bg-[#183B6B]/40 backdrop-blur-sm rounded-xl border border-white/10 p-2">
+                          {link.dropdown.map((item, itemIndex) => (
+                            <Link
+                              key={item.name}
+                              href={item.href}
+                              onClick={(e) => { handleLinkClick(e, item.href); setDropdownOpen(false); }}
+                              className="flex items-center space-x-3 px-4 py-3 text-white/90 font-montserrat font-medium text-base rounded-lg hover:bg-[#F34213]/15 hover:text-white active:bg-[#F34213]/25 focus:bg-[#F34213]/20 focus:text-white focus:outline-none transition-all duration-200"
+                            >
+                              <span className="w-1.5 h-1.5 bg-white/60 rounded-full"></span>
+                              <span>{item.name}</span>
                             </Link>
                           ))}
                         </div>
                       </div>
-                    )}
-                  </>
-                ) : (
-                  <Link
-                    href={link.href}
-                    onClick={(e) => handleLinkClick(e, link.href)}
-                    className="block w-full text-left px-0 py-4 text-white font-bold uppercase rounded-md hover:bg-[#F34213]/80 focus:outline-none focus:ring-2 focus:ring-[#F34213]"
-                  >
-                    {link.name}
-                  </Link>
-                )}
-              </div>
-            ))}
+                    </>
+                  ) : (
+                    <Link
+                      href={link.href}
+                      onClick={(e) => handleLinkClick(e, link.href)}
+                      className="flex items-center space-x-3 w-full px-4 py-4 text-white font-montserrat font-semibold text-lg uppercase tracking-wide rounded-xl bg-white/5 hover:bg-[#F34213]/20 active:bg-[#F34213]/30 focus:outline-none focus:ring-2 focus:ring-[#F34213] transition-all duration-200 border border-white/10 hover:border-[#F34213]/30"
+                    >
+                      <span className="w-2 h-2 bg-[#F34213] rounded-full"></span>
+                      <span>{link.name}</span>
+                    </Link>
+                  )}
+                </div>
+              ))}
+            </div>
           </nav>
+
+          {/* Footer with Branding */}
+          <div className="px-6 py-4 border-t border-white/10">
+            <p className="text-center text-white/60 text-sm font-montserrat">
+              © 2024 IMMK UI - Ikatan Mahasiswa Muslim Kedokteran
+            </p>
+          </div>
         </div>
       )}
     </header>
   );
 }
-
