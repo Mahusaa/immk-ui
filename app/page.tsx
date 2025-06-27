@@ -5,7 +5,6 @@ import { Programs } from "./components/programs";
 import { HeroSection } from "./components/HeroSection";
 import { AboutSection } from "./components/AboutSection";
 import { TimelineSection } from "./components/TimelineSection";
-import { OrganizationStructure } from "./components/OrganizationStructure";
 
 export default function Home() {
   return (

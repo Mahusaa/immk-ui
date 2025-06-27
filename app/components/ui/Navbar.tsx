@@ -128,7 +128,7 @@ export default function Navbar() {
                     <svg className={`w-6 h-6 fill-current transition-transform duration-200 ${openDropdown === link.name ? 'rotate-180' : ''}`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
                   </button>
                   <div className={`pl-4 overflow-hidden transition-all duration-300 ease-in-out ${openDropdown === link.name ? 'max-h-48' : 'max-h-0'}`}>
-                    {link.dropdown.map((item, i) => (
+                    {link.dropdown.map((item) => (
                       <Link key={item.name} href={item.href} onClick={(e) => handleLinkClick(e, item.href)} className="block px-4 py-3 text-white/80 rounded-md hover:bg-[#F34213]/50">
                         {item.name}
                       </Link>
