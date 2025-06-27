@@ -35,7 +35,7 @@ export const TimelineSection = () => {
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
       >
-        <h2 className="text-3xl md:text-5xl font-bold mb-6 text-[#0A2463]">Timeline Kegiatan</h2>
+        <h2 className="text-3xl md:text-5xl font-bold mb-6 text-[#0A2463] font-serif">Timeline Kegiatan</h2>
         <motion.div
           className="w-20 h-1 bg-[#F04E23] mx-auto mb-6"
           initial={{ width: 0 }}

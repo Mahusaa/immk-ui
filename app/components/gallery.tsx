@@ -85,7 +85,7 @@ export const Gallery = () => {
       className="py-24 px-4 sm:px-6 max-w-6xl mx-auto bg-white overflow-hidden scroll-mt-24"
     >
       <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-5xl font-bold mb-6 text-[#0A2463]">Galeri</h2>
+        <h2 className="text-3xl md:text-5xl font-bold mb-6 text-[#0A2463] font-serif">Galeri</h2>
         <div className="w-20 h-1 bg-[#F04E23] mx-auto mb-6" />
         <p className="text-lg leading-relaxed text-gray-600 max-w-3xl mx-auto">
           Dokumentasi kegiatan dan momen penting IMM K.
@@ -101,7 +101,7 @@ export const Gallery = () => {
               onClick={() => setSelectedImage(idx % galleryItems.length)}
             >
               {/* Faint colored circle behind image */}
-              <div className="absolute -top-6 -left-6 w-24 h-24 rounded-full opacity-40 z-0" style={{background: faintCircleColor}} />
+              <div className="absolute -top-6 -left-6 w-24 h-24 rounded-full opacity-40 z-0" style={{ background: faintCircleColor }} />
               <div className="relative z-10 flex flex-col items-center">
                 <div className="w-full h-48 rounded-xl overflow-hidden mb-4 bg-white/40 flex items-center justify-center">
                   <Image src={item.src} alt={item.title} width={320} height={192} className="object-cover w-full h-full" />

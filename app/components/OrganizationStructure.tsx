@@ -148,7 +148,7 @@ const divisiInternal = [
 
 export const OrganizationStructure = () => {
   return (
-    <section id="organization" className="bg-white py-10 sm:py-16 lg:py-20 scroll-mt-24">
+    <section id="organization" className="bg-white py-10 sm:py-16 lg:py-20 scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div

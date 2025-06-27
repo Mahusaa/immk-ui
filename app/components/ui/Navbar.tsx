@@ -5,14 +5,13 @@ import { useState, useEffect } from 'react';
 
 const aboutDropdown = [
   { name: 'Visi & Misi', href: '#about' },
-  { name: 'Tim Pimpinan', href: '#team' },
-  { name: 'MKN UI GUIDE', href: '#mkn-guide' },
+  { name: 'Organization', href: '/organization' },
+  { name: 'MKN UI GUIDE', href: '/mkn-guide' },
 ];
 
 const navLinks = [
   { name: 'Home', href: '/' },
   { name: 'About', href: '#about', dropdown: aboutDropdown },
-  { name: 'Organization', href: '#organization' },
   { name: 'Programs', href: '#programs' },
   { name: 'Gallery', href: '#gallery' },
   { name: 'Timeline', href: '#timeline' },
@@ -20,21 +19,14 @@ const navLinks = [
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
+  // Close dropdown when menu closes
   useEffect(() => {
-    // Close accordion when mobile menu is closed
-    if (!menuOpen) {
-      setOpenDropdown(null);
-    }
+    if (!menuOpen) setDropdownOpen(false);
   }, [menuOpen]);
 
-  const handleMenuToggle = () => setMenuOpen((prev) => !prev);
-
-  const handleDropdownToggle = (name: string) => {
-    setOpenDropdown(openDropdown === name ? null : name);
-  };
-
+  // Handle link click (for smooth scroll and closing menu)
   const handleLinkClick = (e: React.MouseEvent, href: string) => {
     if (href.startsWith('#')) {
       e.preventDefault();
@@ -43,105 +35,61 @@ export default function Navbar() {
         const targetId = href.substring(1);
         const targetElement = document.getElementById(targetId);
         const navbar = document.getElementById('navbar');
-
         if (targetElement && navbar) {
-          // Get accurate navbar height including any mobile menu if open
           const navbarRect = navbar.getBoundingClientRect();
-          const offset = navbarRect.height + 16; // Add some padding
-
+          const offset = navbarRect.height + 16;
           const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
           const offsetPosition = elementPosition - offset;
-
-          window.scrollTo({
-            top: Math.max(0, offsetPosition), // Ensure we don't scroll to negative position
-            behavior: 'smooth'
-          });
+          window.scrollTo({ top: Math.max(0, offsetPosition), behavior: 'smooth' });
         }
-      }, 100); // Increased timeout to ensure menu is fully closed
+      }, 100);
     } else {
       setMenuOpen(false);
     }
   };
 
   return (
-    <header id="navbar" className="w-full fixed z-50 bg-transparent shadow-lg border-b border-white/10">
+    <header id="navbar" className="w-full fixed z-50 bg-[#0A2463] shadow-lg border-b border-white/10">
       <div className="max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-between h-20">
         {/* Logo */}
-        <Link href="/" onClick={(e) => handleLinkClick(e, '/')} aria-label="Go to Home" className="flex items-center space-x-3">
-          <Image src="/immk-logo.jpeg" alt="IMMK Logo" width={48} height={48} className="rounded-full bg-white p-1" />
-          <span className="font-bold text-xl text-white font-montserrat uppercase">IMMK UI</span>
+        <Link href="/" aria-label="Go to Home" className="flex items-center space-x-3">
+          <Image src="/immk-logo.jpeg" alt="IMMK Logo" width={40} height={40} className="rounded-full bg-white p-1 sm:w-12 sm:h-12 w-10 h-10" />
+          <span className="font-bold text-xl text-white font-montserrat uppercase tracking-wide ml-1 sm:ml-2">IMMK UI</span>
         </Link>
-
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center space-x-2">
+        <nav className="hidden md:flex items-center space-x-6">
           {navLinks.map((link) => (
             <div key={link.name} className="relative group">
-              <Link
-                href={link.href}
-                onClick={(e) => {
-                  // Prevent parent link from navigating if it has a dropdown
-                  if (link.dropdown) e.preventDefault();
-                  else handleLinkClick(e, link.href);
-                }}
-                className="flex items-center gap-2 text-white font-montserrat font-medium uppercase tracking-wide px-4 py-2 rounded-md transition-colors duration-200 hover:bg-[#F34213]/30 focus:bg-[#F34213]/40 focus:outline-none"
-              >
-                {link.name}
-                {link.dropdown && (
-                  <svg className="w-4 h-4 fill-current transition-transform duration-200 group-hover:rotate-180" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
-                )}
-              </Link>
-              {link.dropdown && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-48 bg-[#0A2463] rounded-md shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none group-hover:pointer-events-auto">
-                  <div className="py-2">
-                    {link.dropdown.map((item) => (
-                      <Link key={item.name} href={item.href} onClick={(e) => handleLinkClick(e, item.href)} className="block px-4 py-2 text-white/90 hover:bg-[#F34213]/50">
-                        {item.name}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
-          ))}
-        </nav>
-
-        {/* Mobile Menu Button */}
-        <div className="md:hidden">
-          <button onClick={handleMenuToggle} aria-label="Toggle menu" className="p-2 text-white">
-            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={menuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16m-7 6h7"} /></svg>
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile Menu */}
-      <div className={`md:hidden bg-[#0A2463] shadow-2xl transition-all duration-300 ease-in-out overflow-hidden ${menuOpen ? 'max-h-96' : 'max-h-0'}`}>
-        <nav className="max-w-7xl mx-auto px-4 md:px-8 py-5 space-y-3">
-          {navLinks.map((link, idx) => (
-            <div key={link.name} className="mb-2 last:mb-0">
               {link.dropdown ? (
                 <>
                   <button
-                    onClick={() => handleDropdownToggle(link.name)}
-                    className="w-full flex justify-between items-center px-4 py-4 text-white font-semibold uppercase rounded-md hover:bg-[#F34213]/80 focus:outline-none focus:ring-2 focus:ring-[#F34213]"
+                    onClick={() => setDropdownOpen(dropdownOpen ? false : true)}
+                    onMouseEnter={() => setDropdownOpen(true)}
+                    onMouseLeave={() => setDropdownOpen(false)}
+                    aria-haspopup="true"
+                    aria-expanded={dropdownOpen}
+                    className="flex items-center gap-2 text-white font-montserrat font-bold uppercase tracking-wide px-4 py-2 rounded-md transition-colors duration-200 hover:text-[#F34213] focus:text-[#F34213] focus:outline-none focus:ring-2 focus:ring-[#F34213]"
                   >
-                    <span>{link.name}</span>
-                    <svg className={`w-6 h-6 fill-current transition-transform duration-200 ${openDropdown === link.name ? 'rotate-180' : ''}`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+                    {link.name}
+                    <svg className={`w-4 h-4 fill-current transition-transform duration-200 ${dropdownOpen ? 'rotate-180' : ''}`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
                   </button>
-                  <div className={`pl-4 overflow-hidden transition-all duration-300 ease-in-out ${openDropdown === link.name ? 'max-h-48' : 'max-h-0'}`}>
-                    {link.dropdown.map((item) => (
-                      <Link key={item.name} href={item.href} onClick={(e) => handleLinkClick(e, item.href)} className="block px-4 py-3 text-white/80 rounded-md hover:bg-[#F34213]/50">
-                        {item.name}
-                      </Link>
-                    ))}
-                  </div>
-                  {/* Divider for dropdowns except last */}
-                  {idx !== navLinks.length - 1 && <div className="border-b border-white/10 my-2" />}
+                  {dropdownOpen && (
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-52 bg-white rounded-xl shadow-xl z-50 border border-[#0A2463]/10">
+                      <div className="py-2">
+                        {link.dropdown.map((item) => (
+                          <Link key={item.name} href={item.href} onClick={(e) => handleLinkClick(e, item.href)} className="block px-5 py-2 text-[#0A2463] font-montserrat font-medium rounded-lg hover:bg-[#F34213]/10 hover:text-[#F34213] focus:bg-[#F34213]/20 focus:text-[#F34213] focus:outline-none">
+                            {item.name}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </>
               ) : (
                 <Link
                   href={link.href}
                   onClick={(e) => handleLinkClick(e, link.href)}
-                  className="block px-4 py-4 text-white font-semibold uppercase rounded-md hover:bg-[#F34213]/80 focus:outline-none focus:ring-2 focus:ring-[#F34213]"
+                  className="flex items-center gap-2 text-white font-montserrat font-bold uppercase tracking-wide px-4 py-2 rounded-md transition-colors duration-200 hover:text-[#F34213] focus:text-[#F34213] focus:outline-none focus:ring-2 focus:ring-[#F34213]"
                 >
                   {link.name}
                 </Link>
@@ -149,7 +97,65 @@ export default function Navbar() {
             </div>
           ))}
         </nav>
+        {/* Mobile Menu Button */}
+        <div className="md:hidden">
+          <button onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Close menu' : 'Open menu'} aria-expanded={menuOpen} className="p-2 text-white focus:outline-none focus:ring-2 focus:ring-[#F34213]">
+            {menuOpen ? (
+              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+            ) : (
+              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" /></svg>
+            )}
+          </button>
+        </div>
       </div>
+      {/* Mobile Menu Overlay */}
+      {menuOpen && (
+        <div className="fixed inset-0 bg-[#0A2463]/95 z-50 flex flex-col">
+          <div className="flex justify-end p-4">
+            <button onClick={() => setMenuOpen(false)} aria-label="Close menu" className="text-white p-2 focus:outline-none focus:ring-2 focus:ring-[#F34213]">
+              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+            </button>
+          </div>
+          <nav className="flex flex-col items-center mt-4 space-y-4">
+            {navLinks.map((link) => (
+              <div key={link.name} className="w-full flex flex-col items-center">
+                {link.dropdown ? (
+                  <>
+                    <button
+                      onClick={() => setDropdownOpen(dropdownOpen ? false : true)}
+                      aria-expanded={dropdownOpen}
+                      className="w-full flex justify-between items-center px-6 py-4 text-white font-bold uppercase rounded-md hover:bg-[#F34213]/80 focus:outline-none focus:ring-2 focus:ring-[#F34213]"
+                    >
+                      <span>{link.name}</span>
+                      <svg className={`w-6 h-6 fill-current transition-transform duration-200 ${dropdownOpen ? 'rotate-180' : ''}`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+                    </button>
+                    {dropdownOpen && (
+                      <div className="w-full bg-white rounded-xl shadow-xl z-50 border border-[#0A2463]/10 mt-2">
+                        <div className="py-2">
+                          {link.dropdown.map((item) => (
+                            <Link key={item.name} href={item.href} onClick={(e) => handleLinkClick(e, item.href)} className="block px-8 py-3 text-[#0A2463] font-montserrat font-medium rounded-lg hover:bg-[#F34213]/10 hover:text-[#F34213] focus:bg-[#F34213]/20 focus:text-[#F34213] focus:outline-none">
+                              {item.name}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </>
+                ) : (
+                  <Link
+                    href={link.href}
+                    onClick={(e) => handleLinkClick(e, link.href)}
+                    className="block w-full text-center px-6 py-4 text-white font-bold uppercase rounded-md hover:bg-[#F34213]/80 focus:outline-none focus:ring-2 focus:ring-[#F34213]"
+                  >
+                    {link.name}
+                  </Link>
+                )}
+              </div>
+            ))}
+          </nav>
+        </div>
+      )}
     </header>
   );
 }
+
