@@ -24,7 +24,6 @@ export default function RootLayout({
       <body
         className={`${manrope.className} antialiased`}
       >
-  <Navbar />
         {children}
       </body>
     </html>

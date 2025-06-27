@@ -130,7 +130,7 @@ export const Programs = () => {
     <section
       id="programs"
       ref={programsRef}
-      className="relative py-16 sm:py-20 bg-gradient-to-br from-[#0A2463] via-[#1a3a8f] to-[#0A2463] overflow-hidden scroll-mt-20"
+      className="relative py-16 sm:py-20 bg-gradient-to-br from-[#0A2463] via-[#1a3a8f] to-[#0A2463] overflow-hidden scroll-mt-24"
     >
       {/* Top wave divider */}
       <div className="absolute left-0 right-0 h-16 -top-16 overflow-hidden">

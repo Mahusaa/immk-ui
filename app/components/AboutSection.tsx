@@ -34,7 +34,7 @@ export const AboutSection = () => {
 
 
   return (
-    <section id="about" className="bg-[#F2F2F2] py-20 sm:py-24 scroll-mt-20">
+    <section id="about" className="bg-[#F2F2F2] py-20 sm:py-24 scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section 1: Intro */}
         <motion.div

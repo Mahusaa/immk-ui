@@ -30,31 +30,42 @@ export default function Navbar() {
   }, [menuOpen]);
 
   const handleMenuToggle = () => setMenuOpen((prev) => !prev);
-  
+
   const handleDropdownToggle = (name: string) => {
     setOpenDropdown(openDropdown === name ? null : name);
   };
-  
+
   const handleLinkClick = (e: React.MouseEvent, href: string) => {
     if (href.startsWith('#')) {
       e.preventDefault();
-      const targetId = href.substring(1);
-      const targetElement = document.getElementById(targetId);
-      if (targetElement) {
-        const offset = 96; // Navbar height + extra space
-        const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
-        const offsetPosition = elementPosition - offset;
-        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-      }
+      setMenuOpen(false);
+      setTimeout(() => {
+        const targetId = href.substring(1);
+        const targetElement = document.getElementById(targetId);
+        const navbar = document.getElementById('navbar');
+
+        if (targetElement && navbar) {
+          // Get accurate navbar height including any mobile menu if open
+          const navbarRect = navbar.getBoundingClientRect();
+          const offset = navbarRect.height + 16; // Add some padding
+
+          const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+          const offsetPosition = elementPosition - offset;
+
+          window.scrollTo({
+            top: Math.max(0, offsetPosition), // Ensure we don't scroll to negative position
+            behavior: 'smooth'
+          });
+        }
+      }, 100); // Increased timeout to ensure menu is fully closed
+    } else {
+      setMenuOpen(false);
     }
-    // For non-hash links, let the Link component handle navigation.
-    // Close mobile menu after any link click
-    setMenuOpen(false);
   };
 
   return (
-    <header className="w-full fixed top-0 left-0 z-50 h-20 bg-[#0A2463] shadow-lg border-b border-white/10">
-      <div className="max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-between h-full">
+    <header id="navbar" className="w-full fixed z-50 bg-transparent shadow-lg border-b border-white/10">
+      <div className="max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-between h-20">
         {/* Logo */}
         <Link href="/" onClick={(e) => handleLinkClick(e, '/')} aria-label="Go to Home" className="flex items-center space-x-3">
           <Image src="/immk-logo.jpeg" alt="IMMK Logo" width={48} height={48} className="rounded-full bg-white p-1" />
@@ -76,7 +87,7 @@ export default function Navbar() {
               >
                 {link.name}
                 {link.dropdown && (
-                  <svg className="w-4 h-4 fill-current transition-transform duration-200 group-hover:rotate-180" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                  <svg className="w-4 h-4 fill-current transition-transform duration-200 group-hover:rotate-180" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
                 )}
               </Link>
               {link.dropdown && (
@@ -103,32 +114,34 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Menu */}
-      <div className={`md:hidden absolute top-full left-0 w-full bg-[#0A2463] transition-all duration-300 ease-in-out overflow-hidden ${menuOpen ? 'max-h-96' : 'max-h-0'}`}>
-        <nav className="py-4 px-4 space-y-2">
-          {navLinks.map((link) => (
-            <div key={link.name}>
+      <div className={`md:hidden bg-[#0A2463] shadow-2xl transition-all duration-300 ease-in-out overflow-hidden ${menuOpen ? 'max-h-96' : 'max-h-0'}`}>
+        <nav className="max-w-7xl mx-auto px-4 md:px-8 py-5 space-y-3">
+          {navLinks.map((link, idx) => (
+            <div key={link.name} className="mb-2 last:mb-0">
               {link.dropdown ? (
                 <>
                   <button
                     onClick={() => handleDropdownToggle(link.name)}
-                    className="w-full flex justify-between items-center px-3 py-3 text-white font-semibold uppercase rounded-md hover:bg-[#F34213]/80"
+                    className="w-full flex justify-between items-center px-4 py-4 text-white font-semibold uppercase rounded-md hover:bg-[#F34213]/80 focus:outline-none focus:ring-2 focus:ring-[#F34213]"
                   >
                     <span>{link.name}</span>
-                    <svg className={`w-6 h-6 fill-current transition-transform duration-200 ${openDropdown === link.name ? 'rotate-180' : ''}`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                    <svg className={`w-6 h-6 fill-current transition-transform duration-200 ${openDropdown === link.name ? 'rotate-180' : ''}`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
                   </button>
                   <div className={`pl-4 overflow-hidden transition-all duration-300 ease-in-out ${openDropdown === link.name ? 'max-h-48' : 'max-h-0'}`}>
-                    {link.dropdown.map((item) => (
-                      <Link key={item.name} href={item.href} onClick={(e) => handleLinkClick(e, item.href)} className="block px-3 py-2 text-white/80 rounded-md hover:bg-[#F34213]/50">
+                    {link.dropdown.map((item, i) => (
+                      <Link key={item.name} href={item.href} onClick={(e) => handleLinkClick(e, item.href)} className="block px-4 py-3 text-white/80 rounded-md hover:bg-[#F34213]/50">
                         {item.name}
                       </Link>
                     ))}
                   </div>
+                  {/* Divider for dropdowns except last */}
+                  {idx !== navLinks.length - 1 && <div className="border-b border-white/10 my-2" />}
                 </>
               ) : (
                 <Link
                   href={link.href}
                   onClick={(e) => handleLinkClick(e, link.href)}
-                  className="block px-3 py-3 text-white font-semibold uppercase rounded-md hover:bg-[#F34213]/80"
+                  className="block px-4 py-4 text-white font-semibold uppercase rounded-md hover:bg-[#F34213]/80 focus:outline-none focus:ring-2 focus:ring-[#F34213]"
                 >
                   {link.name}
                 </Link>

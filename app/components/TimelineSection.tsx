@@ -27,7 +27,7 @@ const timelineEvents = [
 
 export const TimelineSection = () => {
   return (
-    <section id="timeline" className="py-24 px-4 sm:px-6 max-w-4xl mx-auto bg-white scroll-mt-20">
+    <section id="timeline" className="py-24 px-4 sm:px-6 max-w-4xl mx-auto bg-white scroll-mt-24">
       <motion.div
         className="text-center mb-12"
         initial={{ opacity: 0, y: 50 }}
@@ -35,7 +35,7 @@ export const TimelineSection = () => {
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
       >
-        <h2 className="text-3xl md:text-5xl font-bold mb-6 text-[#0A2463]">Timeline Pendaftaran</h2>
+        <h2 className="text-3xl md:text-5xl font-bold mb-6 text-[#0A2463]">Timeline Kegiatan</h2>
         <motion.div
           className="w-20 h-1 bg-[#F04E23] mx-auto mb-6"
           initial={{ width: 0 }}

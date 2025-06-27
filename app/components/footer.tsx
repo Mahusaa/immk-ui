@@ -26,7 +26,7 @@ const staggerContainer: Variants = {
 export const Footer = () => {
   return (
     <footer className="bg-[#0A2463] text-white pt-24 pb-12 px-6 relative overflow-hidden">
-      <motion.div 
+      <motion.div
         className="absolute left-0 right-0 h-16 -top-16 overflow-hidden"
         initial={{ y: 100, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
@@ -38,25 +38,25 @@ export const Footer = () => {
         </svg>
       </motion.div>
       {/* Decorative elements */}
-      <motion.div 
+      <motion.div
         className="absolute -top-20 -right-20 w-40 h-40 rounded-full bg-[#F04E23]/20"
-        animate={{ 
+        animate={{
           scale: [1, 1.2, 1],
           opacity: [0.2, 0.3, 0.2]
         }}
-        transition={{ 
+        transition={{
           duration: 4,
           repeat: Infinity,
           ease: "easeInOut"
         }}
       />
-      <motion.div 
+      <motion.div
         className="absolute -bottom-10 -left-10 w-60 h-60 rounded-full bg-[#F04E23]/10"
-        animate={{ 
+        animate={{
           scale: [1, 1.1, 1],
           opacity: [0.1, 0.2, 0.1]
         }}
-        transition={{ 
+        transition={{
           duration: 4,
           repeat: Infinity,
           ease: "easeInOut",
@@ -64,7 +64,7 @@ export const Footer = () => {
         }}
       />
       <div className="max-w-7xl mx-auto">
-        <motion.div 
+        <motion.div
           className="grid md:grid-cols-4 gap-8 mb-8"
           variants={staggerContainer}
           initial="hidden"
@@ -72,7 +72,7 @@ export const Footer = () => {
           viewport={{ once: true }}
         >
           <motion.div variants={fadeInUp}>
-            <motion.div 
+            <motion.div
               className="flex items-center gap-2 mb-4"
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
@@ -84,7 +84,7 @@ export const Footer = () => {
                 height={40}
                 className="object-contain"
               />
-              <span className="text-xl font-bold">IMM K</span>
+              <span className="text-xl font-bold">IMMK UI</span>
             </motion.div>
             <p className="text-sm text-white/80 mb-4">
               Wadah pengembangan diri bagi mahasiswa Magister Kenotariatan Universitas Indonesia.
@@ -113,7 +113,7 @@ export const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Tautan Cepat</h3>
             <ul className="space-y-2">
               {['Beranda', 'Tentang', 'Program', 'Galeri', 'Kontak'].map((item) => (
-                <motion.li 
+                <motion.li
                   key={item}
                   whileHover={{ x: 5 }}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
@@ -132,7 +132,7 @@ export const Footer = () => {
           <motion.div variants={fadeInUp}>
             <h3 className="text-lg font-semibold mb-4">Kontak</h3>
             <ul className="space-y-2">
-              <motion.li 
+              <motion.li
                 className="flex items-start gap-2 text-sm text-white/80"
                 whileHover={{ x: 5 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
@@ -140,7 +140,7 @@ export const Footer = () => {
                 <span>📍</span>
                 <span>Gedung Magister Kenotariatan, Kampus UI Depok, Jawa Barat</span>
               </motion.li>
-              <motion.li 
+              <motion.li
                 className="flex items-center gap-2 text-sm text-white/80"
                 whileHover={{ x: 5 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
@@ -148,7 +148,7 @@ export const Footer = () => {
                 <span>📧</span>
                 <a href="mailto:info@immk.org" className="hover:text-white transition-colors">info@immk.org</a>
               </motion.li>
-              <motion.li 
+              <motion.li
                 className="flex items-center gap-2 text-sm text-white/80"
                 whileHover={{ x: 5 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
@@ -184,7 +184,7 @@ export const Footer = () => {
           </motion.div>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           className="border-t border-white/10 pt-8 mt-8 flex flex-col md:flex-row justify-between items-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -192,19 +192,19 @@ export const Footer = () => {
           transition={{ duration: 0.6, delay: 0.4 }}
         >
           <p className="text-sm text-white/60 mb-4 md:mb-0">
-            © {new Date().getFullYear()} IMM K. All rights reserved.
+            © {new Date().getFullYear()} IMMK UI. All rights reserved.
           </p>
           <div className="flex space-x-6">
-            <motion.a 
-              href="#" 
+            <motion.a
+              href="#"
               className="text-sm text-white/60 hover:text-white transition-colors"
               whileHover={{ x: 5 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
               Kebijakan Privasi
             </motion.a>
-            <motion.a 
-              href="#" 
+            <motion.a
+              href="#"
               className="text-sm text-white/60 hover:text-white transition-colors"
               whileHover={{ x: 5 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
