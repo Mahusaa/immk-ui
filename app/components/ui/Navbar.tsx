@@ -142,7 +142,7 @@ export default function Navbar() {
           {/* Navigation Menu */}
           <nav className="flex-1 overflow-y-auto px-6 py-8">
             <div className="space-y-2">
-              {navLinks.map((link, index) => (
+              {navLinks.map((link) => (
                 <div key={link.name} className="w-full">
                   {link.dropdown ? (
                     <>
@@ -163,7 +163,7 @@ export default function Navbar() {
                       {/* Dropdown Items with Animation */}
                       <div className={`overflow-hidden transition-all duration-300 ease-in-out ${dropdownOpen ? 'max-h-96 opacity-100 mt-3' : 'max-h-0 opacity-0'}`}>
                         <div className="bg-[#183B6B]/40 backdrop-blur-sm rounded-xl border border-white/10 p-2">
-                          {link.dropdown.map((item, itemIndex) => (
+                          {link.dropdown.map((item) => (
                             <Link
                               key={item.name}
                               href={item.href}

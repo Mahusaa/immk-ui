@@ -55,7 +55,7 @@ export const AboutSection = () => {
             transition={{ duration: 0.7, delay: 0.2 }}
           />
           <p className="mt-6 text-lg text-gray-700 leading-relaxed">
-            Ikatan Mahasiswa Magister Kenotariatan (IMM K) adalah organisasi mahasiswa yang berkomitmen penuh untuk mengembangkan potensi mahasiswa Magister Kenotariatan melalui berbagai program inovatif yang mendukung pengembangan akademik, profesional, dan sosial.
+            Ikatan Mahasiswa Magister Kenotariatan Universitas Indonesia(IMMK UI) adalah organisasi mahasiswa yang berkomitmen penuh untuk mengembangkan potensi mahasiswa Magister Kenotariatan melalui berbagai program inovatif yang mendukung pengembangan akademik, profesional, dan sosial.
           </p>
           <motion.h3
             className="mt-6 text-2xl font-semibold text-[#F34213] font-serif tracking-wide"
