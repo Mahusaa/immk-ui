@@ -70,7 +70,7 @@ export const AboutSection = () => {
 
         {/* Section 2: Visi */}
         <motion.div
-          className="mt-20 text-center bg-white p-8 md:p-12 rounded-2xl shadow-lg"
+          className="mt-20 text-center bg-[#F2F2F2] p-8 md:p-12 rounded-2xl shadow-lg"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
@@ -106,7 +106,7 @@ export const AboutSection = () => {
             {misi.map((item, index) => (
               <motion.div
                 key={item.title}
-                className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300"
+                className="bg-[#F2F2F2] p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}

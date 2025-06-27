@@ -20,6 +20,7 @@ const navLinks = [
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [dropdownHover, setDropdownHover] = useState(false); // Track hover for About dropdown
 
   // Close dropdown when menu closes
   useEffect(() => {
@@ -31,6 +32,7 @@ export default function Navbar() {
     if (href.startsWith('#')) {
       e.preventDefault();
       setMenuOpen(false);
+      setDropdownOpen(false);
       setTimeout(() => {
         const targetId = href.substring(1);
         const targetElement = document.getElementById(targetId);
@@ -45,8 +47,17 @@ export default function Navbar() {
       }, 100);
     } else {
       setMenuOpen(false);
+      setDropdownOpen(false);
     }
   };
+
+  // Desktop: keep dropdown open if hovering over button or dropdown panel
+  const handleDropdownMouseEnter = () => setDropdownHover(true);
+  const handleDropdownMouseLeave = () => setDropdownHover(false);
+  useEffect(() => {
+    if (!dropdownHover) setDropdownOpen(false);
+    else setDropdownOpen(true);
+  }, [dropdownHover]);
 
   return (
     <header id="navbar" className="w-full fixed z-50 bg-[#0A2463] shadow-lg border-b border-white/10">
@@ -63,9 +74,9 @@ export default function Navbar() {
               {link.dropdown ? (
                 <>
                   <button
-                    onClick={() => setDropdownOpen(dropdownOpen ? false : true)}
-                    onMouseEnter={() => setDropdownOpen(true)}
-                    onMouseLeave={() => setDropdownOpen(false)}
+                    onClick={() => setDropdownOpen(!dropdownOpen)}
+                    onMouseEnter={handleDropdownMouseEnter}
+                    onMouseLeave={handleDropdownMouseLeave}
                     aria-haspopup="true"
                     aria-expanded={dropdownOpen}
                     className="flex items-center gap-2 text-white font-montserrat font-bold uppercase tracking-wide px-4 py-2 rounded-md transition-colors duration-200 hover:text-[#F34213] focus:text-[#F34213] focus:outline-none focus:ring-2 focus:ring-[#F34213]"
@@ -74,10 +85,14 @@ export default function Navbar() {
                     <svg className={`w-4 h-4 fill-current transition-transform duration-200 ${dropdownOpen ? 'rotate-180' : ''}`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
                   </button>
                   {dropdownOpen && (
-                    <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-52 bg-white rounded-xl shadow-xl z-50 border border-[#0A2463]/10">
+                    <div
+                      className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-52 bg-white rounded-xl shadow-xl z-50 border border-[#0A2463]/10"
+                      onMouseEnter={handleDropdownMouseEnter}
+                      onMouseLeave={handleDropdownMouseLeave}
+                    >
                       <div className="py-2">
                         {link.dropdown.map((item) => (
-                          <Link key={item.name} href={item.href} onClick={(e) => handleLinkClick(e, item.href)} className="block px-5 py-2 text-[#0A2463] font-montserrat font-medium rounded-lg hover:bg-[#F34213]/10 hover:text-[#F34213] focus:bg-[#F34213]/20 focus:text-[#F34213] focus:outline-none">
+                          <Link key={item.name} href={item.href} onClick={(e) => { handleLinkClick(e, item.href); setDropdownOpen(false); }} className="block px-5 py-2 text-[#0A2463] font-montserrat font-medium rounded-lg hover:bg-[#F34213]/10 hover:text-[#F34213] focus:bg-[#F34213]/20 focus:text-[#F34213] focus:outline-none">
                             {item.name}
                           </Link>
                         ))}
@@ -116,24 +131,24 @@ export default function Navbar() {
               <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
             </button>
           </div>
-          <nav className="flex flex-col items-center mt-4 space-y-4">
+          <nav className="flex flex-col items-start mt-4 space-y-2 w-full px-6"> {/* align left */}
             {navLinks.map((link) => (
-              <div key={link.name} className="w-full flex flex-col items-center">
+              <div key={link.name} className="w-full flex flex-col items-start">
                 {link.dropdown ? (
                   <>
                     <button
                       onClick={() => setDropdownOpen(dropdownOpen ? false : true)}
                       aria-expanded={dropdownOpen}
-                      className="w-full flex justify-between items-center px-6 py-4 text-white font-bold uppercase rounded-md hover:bg-[#F34213]/80 focus:outline-none focus:ring-2 focus:ring-[#F34213]"
+                      className="w-full flex justify-between items-center px-0 py-4 text-white font-bold uppercase rounded-md bg-transparent hover:bg-[#F34213]/80 focus:outline-none focus:ring-2 focus:ring-[#F34213] text-left"
                     >
                       <span>{link.name}</span>
                       <svg className={`w-6 h-6 fill-current transition-transform duration-200 ${dropdownOpen ? 'rotate-180' : ''}`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
                     </button>
                     {dropdownOpen && (
-                      <div className="w-full bg-white rounded-xl shadow-xl z-50 border border-[#0A2463]/10 mt-2">
+                      <div className="w-full bg-[#183B6B] bg-opacity-90 backdrop-blur rounded-xl shadow-xl z-50 border-none mt-2">
                         <div className="py-2">
                           {link.dropdown.map((item) => (
-                            <Link key={item.name} href={item.href} onClick={(e) => handleLinkClick(e, item.href)} className="block px-8 py-3 text-[#0A2463] font-montserrat font-medium rounded-lg hover:bg-[#F34213]/10 hover:text-[#F34213] focus:bg-[#F34213]/20 focus:text-[#F34213] focus:outline-none">
+                            <Link key={item.name} href={item.href} onClick={(e) => { handleLinkClick(e, item.href); setDropdownOpen(false); }} className="block px-6 py-3 text-white font-montserrat font-medium rounded-lg hover:bg-[#F34213]/10 hover:text-[#F34213] focus:bg-[#F34213]/20 focus:text-[#F34213] focus:outline-none text-left">
                               {item.name}
                             </Link>
                           ))}
@@ -145,7 +160,7 @@ export default function Navbar() {
                   <Link
                     href={link.href}
                     onClick={(e) => handleLinkClick(e, link.href)}
-                    className="block w-full text-center px-6 py-4 text-white font-bold uppercase rounded-md hover:bg-[#F34213]/80 focus:outline-none focus:ring-2 focus:ring-[#F34213]"
+                    className="block w-full text-left px-0 py-4 text-white font-bold uppercase rounded-md hover:bg-[#F34213]/80 focus:outline-none focus:ring-2 focus:ring-[#F34213]"
                   >
                     {link.name}
                   </Link>

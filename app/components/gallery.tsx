@@ -18,12 +18,12 @@ interface GalleryItem {
 
 export const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
-  const galleryItems: GalleryItem[] = Array.from({ length: 12 }, (_, i) => ({
+  const galleryItems: GalleryItem[] = Array.from({ length: 10 }, (_, i) => ({
     id: i + 1,
     title: `Kegiatan ${i + 1}`,
     category: i % 3 === 0 ? 'Seminar' : i % 2 === 0 ? 'Workshop' : 'Kunjungan',
     date: `2023-${String(Math.floor(i / 4) + 1).padStart(2, '0')}-${String((i % 12) + 1).padStart(2, '0')}`,
-    src: `/gallery${i + 1}.jpg`,
+    src: `/gallery${i + 1}.jpeg`,
     desc: `Deskripsi kegiatan ${i + 1}`
   }));
 
@@ -82,7 +82,7 @@ export const Gallery = () => {
   return (
     <section
       id="gallery"
-      className="py-24 px-4 sm:px-6 max-w-6xl mx-auto bg-white overflow-hidden scroll-mt-24"
+      className="py-24 px-4 sm:px-6 max-w-6xl mx-auto bg-[#F2F2F2] overflow-hidden scroll-mt-24"
     >
       <div className="text-center mb-12">
         <h2 className="text-3xl md:text-5xl font-bold mb-6 text-[#0A2463] font-serif">Galeri</h2>
@@ -136,7 +136,7 @@ export const Gallery = () => {
             onClick={() => setSelectedImage(null)}
           >
             <motion.div
-              className="bg-white rounded-2xl p-4 max-w-lg w-full relative"
+              className="bg-[#F2F2F2] rounded-2xl p-4 max-w-lg w-full relative"
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}

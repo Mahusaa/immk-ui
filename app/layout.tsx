@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en" style={{ scrollBehavior: "smooth" }}>
       <body
-        className={`${manrope.className} antialiased`}
+        className={`${manrope.className} antialiased w-full`}
       >
         <Navbar />
         {children}

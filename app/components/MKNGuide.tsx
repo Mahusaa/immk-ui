@@ -11,7 +11,7 @@ const guideLinks = [
 
 const MKNGuide = () => {
   return (
-    <section id="mkn-guide" className="bg-white py-12 sm:py-20 lg:py-24 scroll-mt-24">
+    <section id="mkn-guide" className="bg-[#F2F2F2] py-12 sm:py-20 lg:py-24 scroll-mt-24">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -44,7 +44,7 @@ const MKNGuide = () => {
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="relative flex flex-col items-center justify-between bg-white rounded-xl border border-[#0A2463]/15 min-h-[180px] w-full max-w-xs mx-auto p-6 sm:p-7 transition-all hover:shadow-lg hover:border-[#F34213] focus:outline-none focus:ring-2 focus:ring-[#F34213] group"
+                className="relative flex flex-col items-center justify-between bg-[#F2F2F2] rounded-xl border border-[#0A2463]/15 min-h-[180px] w-full max-w-xs mx-auto p-6 sm:p-7 transition-all hover:shadow-lg hover:border-[#F34213] focus:outline-none focus:ring-2 focus:ring-[#F34213] group"
                 tabIndex={0}
                 aria-label={link.name}
               >

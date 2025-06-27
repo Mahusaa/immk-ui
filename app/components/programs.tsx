@@ -171,12 +171,12 @@ export const Programs = () => {
 
         {/* Tab Navigation */}
         <div className="flex justify-center mb-8">
-          <div className="flex flex-wrap justify-center gap-2 bg-white/10 backdrop-blur-sm rounded-2xl p-2 max-w-4xl">
+          <div className="grid grid-cols-2 gap-2 bg-white/10 backdrop-blur-sm rounded-2xl p-2 max-w-4xl w-full sm:flex sm:grid-cols-none sm:grid-rows-none sm:gap-2 sm:w-auto">
             {programCategories.map((category, index) => (
               <button
                 key={category.title}
                 onClick={() => setActiveTab(index)}
-                className={`flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300 whitespace-nowrap ${
+                className={`flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300 whitespace-nowrap w-full sm:w-auto justify-center ${
                   index === activeTab
                     ? 'bg-[#F34213] text-white shadow-lg'
                     : 'text-white/70 hover:text-white hover:bg-white/10'

@@ -27,7 +27,7 @@ const timelineEvents = [
 
 export const TimelineSection = () => {
   return (
-    <section id="timeline" className="py-24 px-4 sm:px-6 max-w-4xl mx-auto bg-white scroll-mt-24">
+    <section id="timeline" className="py-24 px-4 sm:px-6 max-w-4xl mx-auto  scroll-mt-24">
       <motion.div
         className="text-center mb-12"
         initial={{ opacity: 0, y: 50 }}
