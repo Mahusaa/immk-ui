@@ -195,7 +195,7 @@ export default function Navbar() {
           {/* Footer with Branding */}
           <div className="px-6 py-4 border-t border-white/10">
             <p className="text-center text-white/60 text-sm font-montserrat">
-              © 2024 IMMK UI - Ikatan Mahasiswa Muslim Kedokteran
+              © 2024 IMMK UI - Ikatan Mahasiswa Magister Kenotariatan UI
             </p>
           </div>
         </div>
