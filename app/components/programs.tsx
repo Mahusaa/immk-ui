@@ -15,6 +15,9 @@ export const Programs = () => {
     window.open('https://www.instagram.com/notarismasakini', '_blank');
   };
 
+  const handleMKNGuide = () => {
+    window.open('https://immkui.com/mkn-guide', '_blank');
+  };
   const programCategories = [
     {
       title: "Program",
@@ -27,7 +30,7 @@ export const Programs = () => {
           title: "MKN UI GUIDE",
           desc: "Panduan lengkap dan informasi terkini seputar program Magister Kenotariatan UI.",
           icon: "📖",
-          onClick: undefined
+          onClick: handleMKNGuide
         },
         {
           title: "Lomba Pembuatan Akta",
@@ -177,8 +180,8 @@ export const Programs = () => {
                 key={category.title}
                 onClick={() => setActiveTab(index)}
                 className={`flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300 whitespace-nowrap w-full sm:w-auto justify-center ${index === activeTab
-                    ? 'bg-[#F34213] text-white shadow-lg'
-                    : 'text-white/70 hover:text-white hover:bg-white/10'
+                  ? 'bg-[#F34213] text-white shadow-lg'
+                  : 'text-white/70 hover:text-white hover:bg-white/10'
                   }`}
               >
                 <span className="text-lg">{category.icon}</span>
@@ -226,26 +229,27 @@ export const Programs = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: itemIndex * 0.1 }}
+                    className="h-full"
                   >
                     <div
                       onClick={item.onClick}
-                      className={`group bg-white/10 backdrop-blur-sm rounded-xl p-5 sm:p-6 shadow-lg border border-white/20 transition-all duration-300 hover:scale-105 ${item.onClick ? 'cursor-pointer hover:bg-white/20 hover:border-[#F34213]' : 'cursor-default'
+                      className={`group bg-white/10 backdrop-blur-sm rounded-xl p-5 sm:p-6 shadow-lg border border-white/20 transition-all duration-300 hover:scale-105 h-full flex flex-col ${item.onClick ? 'cursor-pointer hover:bg-white/20 hover:border-[#F34213]' : 'cursor-default'
                         }`}
                     >
-                      <div className="flex items-start space-x-4">
+                      <div className="flex items-start space-x-4 flex-1">
                         <div className="flex-shrink-0">
                           <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-2xl group-hover:bg-[#F34213]/20 transition-colors">
                             {item.icon}
                           </div>
                         </div>
-                        <div className="flex-1 min-w-0">
+                        <div className="flex-1 min-w-0 flex flex-col">
                           <h4 className="text-lg font-bold text-white group-hover:text-[#F34213] transition-colors mb-2">
                             {item.title}
                           </h4>
-                          <p className="text-white/70 text-sm leading-relaxed mb-3">
+                          <p className="text-white/70 text-sm leading-relaxed mb-3 flex-1">
                             {item.desc}
                           </p>
-                          <div className="flex items-center text-sm font-medium text-white/60 group-hover:text-white transition-colors">
+                          <div className="flex items-center text-sm font-medium text-white/60 group-hover:text-white transition-colors mt-auto">
                             <span>
                               {item.onClick === handleComingSoon ? 'Coming Soon' :
                                 item.onClick === handleNotarisMasaKini ? 'Kunjungi Instagram' :

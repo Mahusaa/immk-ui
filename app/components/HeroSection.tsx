@@ -9,13 +9,14 @@ export const HeroSection = () => {
     <section
       id="home"
       className="relative min-h-[100dvh] w-full overflow-hidden flex items-center justify-center scroll-mt-24"
+      aria-label="Halaman Utama IMMK UI"
     >
       {/* Background image, optimized for performance */}
       <div className="absolute inset-0">
         {/* Background Image with loading optimization */}
         <Image
           src="/balai_sidang.jpg"
-          alt="Balai Sidang"
+          alt="Balai Sidang Universitas Indonesia - Latar belakang halaman utama IMMK UI"
           fill
           priority
           quality={30}
@@ -48,6 +49,7 @@ export const HeroSection = () => {
             ease: "easeOut",
             delay: 0.3
           }}
+          aria-hidden="true"
         />
 
         <motion.p
@@ -79,6 +81,7 @@ export const HeroSection = () => {
             ease: "easeOut",
             delay: 0.7
           }}
+          aria-label="Pelajari lebih lanjut tentang IMMK UI"
         >
           <motion.div
             animate={{ y: [0, 3, 0] }}
@@ -87,9 +90,11 @@ export const HeroSection = () => {
               repeat: Infinity,
               ease: "easeInOut"
             }}
+            aria-hidden="true"
           >
             <ChevronDown className="w-8 h-8" />
           </motion.div>
+          <span className="sr-only">Scroll ke bawah untuk informasi lebih lanjut</span>
         </motion.a>
       </div>
     </section>

@@ -2,6 +2,7 @@
 
 import Image from "next/image"
 import { motion, Variants } from "framer-motion"
+import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react"
 
 const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 20 },
@@ -90,19 +91,23 @@ export const Footer = () => {
               Wadah pengembangan diri bagi mahasiswa Magister Kenotariatan Universitas Indonesia.
             </p>
             <div className="flex space-x-4">
-              {['facebook', 'twitter', 'instagram', 'linkedin'].map((social) => (
+              {[
+                { icon: Facebook, name: 'facebook', href: '#' },
+                { icon: Twitter, name: 'twitter', href: '#' },
+                { icon: Instagram, name: 'instagram', href: '#' },
+                { icon: Linkedin, name: 'linkedin', href: '#' }
+              ].map(({ icon: Icon, name, href }) => (
                 <motion.a
-                  key={social}
-                  href={`#`}
+                  key={name}
+                  href={href}
                   className="text-white/70 hover:text-white transition-colors"
-                  aria-label={social}
+                  aria-label={name}
                   whileHover={{ scale: 1.2, rotate: 5 }}
                   whileTap={{ scale: 0.9 }}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
                 >
-                  <span className="sr-only">{social}</span>
                   <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center">
-                    <span className="text-sm">{social === 'facebook' ? 'f' : social[0].toUpperCase()}</span>
+                    <Icon size={16} />
                   </div>
                 </motion.a>
               ))}
