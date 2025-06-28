@@ -15,6 +15,7 @@ export const metadata: Metadata = {
     template: "%s | IMMK UI"
   },
   description: "Wadah pengembangan diri bagi mahasiswa Magister Kenotariatan Universitas Indonesia. Program unggulan, workshop, dan kegiatan rutin untuk pengembangan akademik dan profesional.",
+  icons: [{ rel: "icon", url: "/favicon.ico" }],
   keywords: [
     "IMMK UI",
     "Magister Kenotariatan",
@@ -93,7 +94,7 @@ export default function RootLayout({
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#0A2463" />
         <meta name="msapplication-TileColor" content="#0A2463" />
-        
+
         {/* Structured Data */}
         <script
           type="application/ld+json"
