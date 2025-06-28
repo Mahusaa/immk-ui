@@ -168,7 +168,7 @@ export const OrganizationStructure = () => {
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0A2463] font-serif tracking-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0A2463]  tracking-tight">
             Struktur Organisasi
           </h2>
           <motion.div

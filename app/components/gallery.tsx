@@ -85,7 +85,7 @@ export const Gallery = () => {
       className="py-24 px-4 sm:px-6 max-w-6xl mx-auto bg-[#F2F2F2] overflow-hidden scroll-mt-24"
     >
       <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-5xl font-bold mb-6 text-[#0A2463] font-serif">Galeri</h2>
+        <h2 className="text-3xl md:text-5xl font-bold mb-6 text-[#0A2463]">Galeri</h2>
         <div className="w-20 h-1 bg-[#F04E23] mx-auto mb-6" />
         <p className="text-lg leading-relaxed text-gray-600 max-w-3xl mx-auto">
           Dokumentasi kegiatan dan momen penting IMM K.

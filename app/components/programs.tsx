@@ -154,7 +154,7 @@ export const Programs = () => {
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white font-serif tracking-tight mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white  tracking-tight mb-4">
             Program & Kegiatan
           </h2>
           <p className="text-white/80 text-lg max-w-2xl mx-auto mb-6">
@@ -176,11 +176,10 @@ export const Programs = () => {
               <button
                 key={category.title}
                 onClick={() => setActiveTab(index)}
-                className={`flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300 whitespace-nowrap w-full sm:w-auto justify-center ${
-                  index === activeTab
+                className={`flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300 whitespace-nowrap w-full sm:w-auto justify-center ${index === activeTab
                     ? 'bg-[#F34213] text-white shadow-lg'
                     : 'text-white/70 hover:text-white hover:bg-white/10'
-                }`}
+                  }`}
               >
                 <span className="text-lg">{category.icon}</span>
                 <span className="hidden sm:inline">{category.title}</span>
@@ -230,9 +229,8 @@ export const Programs = () => {
                   >
                     <div
                       onClick={item.onClick}
-                      className={`group bg-white/10 backdrop-blur-sm rounded-xl p-5 sm:p-6 shadow-lg border border-white/20 transition-all duration-300 hover:scale-105 ${
-                        item.onClick ? 'cursor-pointer hover:bg-white/20 hover:border-[#F34213]' : 'cursor-default'
-                      }`}
+                      className={`group bg-white/10 backdrop-blur-sm rounded-xl p-5 sm:p-6 shadow-lg border border-white/20 transition-all duration-300 hover:scale-105 ${item.onClick ? 'cursor-pointer hover:bg-white/20 hover:border-[#F34213]' : 'cursor-default'
+                        }`}
                     >
                       <div className="flex items-start space-x-4">
                         <div className="flex-shrink-0">
@@ -249,9 +247,9 @@ export const Programs = () => {
                           </p>
                           <div className="flex items-center text-sm font-medium text-white/60 group-hover:text-white transition-colors">
                             <span>
-                              {item.onClick === handleComingSoon ? 'Coming Soon' : 
-                               item.onClick === handleNotarisMasaKini ? 'Kunjungi Instagram' : 
-                               'Selengkapnya'}
+                              {item.onClick === handleComingSoon ? 'Coming Soon' :
+                                item.onClick === handleNotarisMasaKini ? 'Kunjungi Instagram' :
+                                  'Selengkapnya'}
                             </span>
                             {item.onClick && (
                               <svg
