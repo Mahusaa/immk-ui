@@ -38,12 +38,12 @@ const positionMap: Record<string, string> = {
 const manajemenBoard = [
   {
     name: 'Salisa Emmirani Azka, S.H.',
-    position: 'Sekertaris I',
+    position: 'Sekretaris I',
     image: '/sekt-1.png',
   },
   {
     name: 'Salma Nabilah, S.H.',
-    position: 'Sekertaris II',
+    position: 'Sekretaris II',
     image: '/sekt-2.png',
   },
 ];
@@ -210,7 +210,7 @@ export const OrganizationStructure = () => {
           </div>
         ))}
       </div>
-      <div className="bg-[#F34213] text-white text-center py-3 text-lg sm:text-xl font-bold tracking-wide uppercase mt-4">Sekertaris Umum</div>
+      <div className="bg-[#F34213] text-white text-center py-3 text-lg sm:text-xl font-bold tracking-wide uppercase mt-4">Sekretaris Umum</div>
       <div className="flex flex-wrap justify-center gap-6 py-8 bg-[#F2F2F2]">
         {manajemenBoard.map((member) => (
           <div key={member.name + member.position} className="flex flex-col items-center w-full max-w-xs sm:max-w-sm md:max-w-xs">
