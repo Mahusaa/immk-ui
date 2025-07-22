@@ -151,15 +151,7 @@ export const Footer = () => {
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
                 <span>📧</span>
-                <a href="mailto:info@immk.org" className="hover:text-white transition-colors">info@immk.org</a>
-              </motion.li>
-              <motion.li
-                className="flex items-center gap-2 text-sm text-white/80"
-                whileHover={{ x: 5 }}
-                transition={{ type: "spring", stiffness: 400, damping: 10 }}
-              >
-                <span>📱</span>
-                <a href="tel:+6281234567890" className="hover:text-white transition-colors">+62 812-3456-7890</a>
+                <a href="mailto:immk.ui.2025@gmail.com" className="hover:text-white transition-colors">immk.ui.2025@gmail.com</a>
               </motion.li>
             </ul>
           </motion.div>

@@ -5,15 +5,15 @@ import { useState, useEffect } from 'react';
 
 const aboutDropdown = [
   { name: 'Visi & Misi', href: '/#about' },
-  { name: 'Organization', href: '/organization' },
-  { name: 'MKN UI GUIDE', href: '/mkn-guide' },
+  { name: 'Struktur Organisasi', href: '/organization' },
+  { name: 'Panduan MKN UI', href: '/mkn-guide' },
 ];
 
 const navLinks = [
-  { name: 'Home', href: '/' },
-  { name: 'About', href: '#about', dropdown: aboutDropdown },
-  { name: 'Programs', href: '/#programs' },
-  { name: 'Gallery', href: '/#gallery' },
+  { name: 'Beranda', href: '/' },
+  { name: 'Tentang', href: '#about', dropdown: aboutDropdown },
+  { name: 'Program', href: '/#programs' },
+  { name: 'Galeri', href: '/#gallery' },
 ];
 
 export default function Navbar() {
@@ -62,8 +62,8 @@ export default function Navbar() {
     <header id="navbar" className="w-full fixed z-50 bg-[#0A2463] shadow-lg border-b border-white/10">
       <div className="max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-between h-20">
         {/* Logo */}
-        <Link href="/" aria-label="Go to Home" className="flex items-center space-x-3">
-          <Image src="/immk-logo.jpeg" alt="IMMK Logo" width={40} height={40} className="rounded-full bg-white p-1 sm:w-12 sm:h-12 w-10 h-10" />
+        <Link href="/" aria-label="Ke Beranda" className="flex items-center space-x-3">
+          <Image src="/immk-logo.jpeg" alt="Logo IMMK UI" width={40} height={40} className="rounded-full bg-white p-1 sm:w-12 sm:h-12 w-10 h-10" />
           <span className="font-bold text-xl text-white font-montserrat uppercase tracking-wide ml-1 sm:ml-2">IMMK UI</span>
         </Link>
 
@@ -115,7 +115,7 @@ export default function Navbar() {
 
         {/* Mobile Menu Button */}
         <div className="md:hidden">
-          <button onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Close menu' : 'Open menu'} aria-expanded={menuOpen} className="p-2 text-white focus:outline-none focus:ring-2 focus:ring-[#F34213] rounded-md">
+          <button onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Tutup menu' : 'Buka menu'} aria-expanded={menuOpen} className="p-2 text-white focus:outline-none focus:ring-2 focus:ring-[#F34213] rounded-md">
             {menuOpen ? (
               <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" /></svg>
             ) : (
@@ -131,10 +131,10 @@ export default function Navbar() {
           {/* Header with Close Button */}
           <div className="flex items-center justify-between px-6 py-5 border-b border-white/10">
             <div className="flex items-center space-x-3">
-              <Image src="/immk-logo.jpeg" alt="IMMK Logo" width={32} height={32} className="rounded-full bg-white p-0.5" />
+              <Image src="/immk-logo.jpeg" alt="Logo IMMK UI" width={32} height={32} className="rounded-full bg-white p-0.5" />
               <span className="font-bold text-lg text-white font-montserrat uppercase tracking-wide">IMMK UI</span>
             </div>
-            <button onClick={() => setMenuOpen(false)} aria-label="Close menu" className="text-white p-2 rounded-md hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-[#F34213] transition-colors">
+            <button onClick={() => setMenuOpen(false)} aria-label="Tutup menu" className="text-white p-2 rounded-md hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-[#F34213] transition-colors">
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" /></svg>
             </button>
           </div>

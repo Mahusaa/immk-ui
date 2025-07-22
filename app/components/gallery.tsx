@@ -18,14 +18,88 @@ interface GalleryItem {
 
 export const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
-  const galleryItems: GalleryItem[] = Array.from({ length: 10 }, (_, i) => ({
-    id: i + 1,
-    title: `Kegiatan ${i + 1}`,
-    category: i % 3 === 0 ? 'Seminar' : i % 2 === 0 ? 'Workshop' : 'Kunjungan',
-    date: `2023-${String(Math.floor(i / 4) + 1).padStart(2, '0')}-${String((i % 12) + 1).padStart(2, '0')}`,
-    src: `/gallery${i + 1}.jpeg`,
-    desc: `Deskripsi kegiatan ${i + 1}`
-  }));
+  const galleryItems: GalleryItem[] = [
+    {
+      id: 1,
+      title: 'Notaris dalam Aksi',
+      category: 'Praktikum',
+      date: '2023-03-12',
+      src: '/Notary_In_Action_1.webp',
+      desc: 'Sesi praktik langsung kenotariatan bersama mahasiswa dan profesional.'
+    },
+    {
+      id: 2,
+      title: 'Notaris dalam Aksi',
+      category: 'Praktikum',
+      date: '2023-03-13',
+      src: '/Notary_In_Action_2.webp',
+      desc: 'Simulasi nyata prosedur kenotariatan.'
+    },
+    {
+      id: 3,
+      title: 'Notaris dalam Aksi',
+      category: 'Praktikum',
+      date: '2023-03-14',
+      src: '/Notary_In_Action_3.webp',
+      desc: 'Mahasiswa belajar melalui studi kasus kenotariatan secara langsung.'
+    },
+    {
+      id: 4,
+      title: 'Seminar & Workshop',
+      category: 'Seminar',
+      date: '2023-04-10',
+      src: '/Seminar_Dan_Workshop_IMMK_UI.webp',
+      desc: 'Seminar dan workshop interaktif untuk mahasiswa kenotariatan.'
+    },
+    {
+      id: 5,
+      title: 'Seminar & Workshop',
+      category: 'Seminar',
+      date: '2023-04-11',
+      src: '/Seminar_Dan_Workshop_IMMK_UI_1.webp',
+      desc: 'Pembelajaran kolaboratif dan diskusi topik kenotariatan.'
+    },
+    {
+      id: 6,
+      title: 'Pekan Notaris',
+      category: 'Event',
+      date: '2023-05-05',
+      src: '/Pekan_Notaris_1.webp',
+      desc: 'Pekan notaris tahunan dengan berbagai aktivitas.'
+    },
+    {
+      id: 7,
+      title: 'Pekan Notaris',
+      category: 'Event',
+      date: '2023-05-06',
+      src: '/Pekan_Notaris_2.webp',
+      desc: 'Kompetisi dan workshop selama Pekan Notaris.'
+    },
+    {
+      id: 8,
+      title: 'Pekan Notaris',
+      category: 'Event',
+      date: '2023-05-07',
+      src: '/Pekan_Notaris_3.webp',
+      desc: 'Acara penutupan Pekan Notaris.'
+    },
+    {
+      id: 9,
+      title: 'Kunjungan Kantor Notaris',
+      category: 'Kunjungan',
+      date: '2023-06-15',
+      src: '/visit_kantor_notaris.webp',
+      desc: 'Kunjungan ke kantor notaris profesional untuk pengalaman praktis.'
+    },
+    {
+      id: 10,
+      title: 'Konferensi FOMNI',
+      category: 'Konferensi',
+      date: '2023-07-20',
+      src: '/Konferensi_Forum_Organisasi_Mahasiswa_Notariat_Indonesia_(FOMNI).webp',
+      desc: 'Konferensi nasional organisasi mahasiswa kenotariatan.'
+    },
+  ];
 
   // Duplicate items for seamless infinite marquee
   const marqueeItems = [...galleryItems, ...galleryItems];
@@ -88,7 +162,7 @@ export const Gallery = () => {
         <h2 className="text-3xl md:text-5xl font-bold mb-6 text-[#0A2463]">Galeri</h2>
         <div className="w-20 h-1 bg-[#F04E23] mx-auto mb-6" />
         <p className="text-lg leading-relaxed text-gray-600 max-w-3xl mx-auto">
-          Dokumentasi kegiatan dan momen penting IMM K.
+          Dokumentasi kegiatan dan momen penting IMMK UI.
         </p>
       </div>
       <div className="relative w-full">

@@ -185,7 +185,7 @@ export const OrganizationStructure = () => {
       </div>
       {/* Executive Board */}
       <div className="bg-[#F34213] text-white text-center py-3 text-lg sm:text-xl font-bold tracking-wide uppercase">
-        Tim Pimpinan
+        Ketua dan Wakil Ketua
       </div>
       <div className="flex flex-col md:flex-row justify-center items-center gap-8 py-8 bg-[#F2F2F2]">
         {executiveBoard.map((member) => (
