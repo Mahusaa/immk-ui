@@ -11,7 +11,7 @@ const aboutDropdown = [
 
 const navLinks = [
   { name: 'Beranda', href: '/' },
-  { name: 'Tentang', href: '#about', dropdown: aboutDropdown },
+  { name: 'Tentang Kami', href: '#about', dropdown: aboutDropdown },
   { name: 'Program', href: '/#programs' },
   { name: 'Galeri', href: '/#gallery' },
 ];
@@ -195,7 +195,7 @@ export default function Navbar() {
           {/* Footer with Branding */}
           <div className="px-6 py-4 border-t border-white/10">
             <p className="text-center text-white/60 text-sm font-montserrat">
-              © 2024 IMMK UI - Ikatan Mahasiswa Magister Kenotariatan UI
+              © 2025 IMMK UI - Ikatan Mahasiswa Magister Kenotariatan UI
             </p>
           </div>
         </div>

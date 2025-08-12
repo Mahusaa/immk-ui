@@ -8,12 +8,12 @@ const executiveBoard = [
   {
     name: 'Naufal Nedja Deandra, S.H.',
     position: 'Ketua',
-    image: '/ketua.png',
+    image: '/ketua-new.png',
   },
   {
     name: 'Tazkya Rizqyta Radhwa, S.H.',
     position: 'Wakil Ketua',
-    image: '/waketu.png',
+    image: '/waketu-new.png',
   },
 ];
 

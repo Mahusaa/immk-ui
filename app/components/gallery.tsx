@@ -21,7 +21,7 @@ export const Gallery = () => {
   const galleryItems: GalleryItem[] = [
     {
       id: 1,
-      title: 'Notaris dalam Aksi',
+      title: 'Notary in Action',
       category: 'Praktikum',
       date: '2023-03-12',
       src: '/Notary_In_Action_1.webp',
@@ -29,7 +29,7 @@ export const Gallery = () => {
     },
     {
       id: 2,
-      title: 'Notaris dalam Aksi',
+      title: 'Notary in Action',
       category: 'Praktikum',
       date: '2023-03-13',
       src: '/Notary_In_Action_2.webp',
@@ -37,7 +37,7 @@ export const Gallery = () => {
     },
     {
       id: 3,
-      title: 'Notaris dalam Aksi',
+      title: 'Notary in Action',
       category: 'Praktikum',
       date: '2023-03-14',
       src: '/Notary_In_Action_3.webp',
@@ -181,7 +181,6 @@ export const Gallery = () => {
                   <Image src={item.src} alt={item.title} width={320} height={192} className="object-cover w-full h-full" />
                 </div>
                 <h3 className="text-lg font-bold mb-2 text-[#0A2463] text-center">{item.title}</h3>
-                <p className="text-gray-600 text-center text-sm">{item.desc}</p>
               </div>
             </div>
           ))}
@@ -218,7 +217,6 @@ export const Gallery = () => {
             >
               <Image src={galleryItems[selectedImage].src} alt={galleryItems[selectedImage].title} width={600} height={400} className="rounded-xl object-cover w-full h-64" />
               <h3 className="text-lg font-bold mt-4 text-[#0A2463]">{galleryItems[selectedImage].title}</h3>
-              <p className="text-gray-600 text-sm mt-2">{galleryItems[selectedImage].desc}</p>
               <button className="absolute top-2 right-2 text-[#F04E23] hover:text-[#0A2463] text-2xl font-bold" onClick={() => setSelectedImage(null)}>&times;</button>
             </motion.div>
           </motion.div>
