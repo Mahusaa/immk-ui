@@ -2,6 +2,16 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu"
+import { cn } from "@/lib/utils"
 
 const aboutDropdown = [
   { name: 'Visi & Misi', href: '/#about' },
@@ -19,7 +29,6 @@ const navLinks = [
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [dropdownHover, setDropdownHover] = useState(false);
 
   // Close dropdown when menu closes
   useEffect(() => {
@@ -50,14 +59,6 @@ export default function Navbar() {
     }
   };
 
-  // Desktop: keep dropdown open if hovering over button or dropdown panel
-  const handleDropdownMouseEnter = () => setDropdownHover(true);
-  const handleDropdownMouseLeave = () => setDropdownHover(false);
-  useEffect(() => {
-    if (!dropdownHover) setDropdownOpen(false);
-    else setDropdownOpen(true);
-  }, [dropdownHover]);
-
   return (
     <header id="navbar" className="w-full fixed z-50 bg-[#0A2463] shadow-lg border-b border-white/10">
       <div className="max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-between h-20">
@@ -67,51 +68,56 @@ export default function Navbar() {
           <span className="font-bold text-xl text-white font-montserrat uppercase tracking-wide ml-1 sm:ml-2">IMMK UI</span>
         </Link>
 
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center space-x-6">
-          {navLinks.map((link) => (
-            <div key={link.name} className="relative group">
-              {link.dropdown ? (
-                <>
-                  <button
-                    onClick={() => setDropdownOpen(!dropdownOpen)}
-                    onMouseEnter={handleDropdownMouseEnter}
-                    onMouseLeave={handleDropdownMouseLeave}
-                    aria-haspopup="true"
-                    aria-expanded={dropdownOpen}
-                    className="flex items-center gap-2 text-white font-montserrat font-bold uppercase tracking-wide px-4 py-2 rounded-md transition-colors duration-200 hover:text-[#F34213] focus:text-[#F34213] focus:outline-none focus:ring-2 focus:ring-[#F34213]"
-                  >
-                    {link.name}
-                    <svg className={`w-4 h-4 fill-current transition-transform duration-200 ${dropdownOpen ? 'rotate-180' : ''}`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
-                  </button>
-                  {dropdownOpen && (
-                    <div
-                      className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-52 bg-white rounded-xl shadow-xl z-50 border border-[#0A2463]/10"
-                      onMouseEnter={handleDropdownMouseEnter}
-                      onMouseLeave={handleDropdownMouseLeave}
+        {/* Desktop Nav with shadcn NavigationMenu */}
+        <NavigationMenu className="hidden md:flex">
+          <NavigationMenuList>
+            {navLinks.map((link) => (
+              <NavigationMenuItem key={link.name}>
+                {link.dropdown ? (
+                  <>
+                    <NavigationMenuTrigger
+                      className={cn(
+                        "bg-transparent text-white font-montserrat font-bold uppercase tracking-wide hover:bg-transparent hover:text-[#F34213] focus:bg-transparent focus:text-[#F34213] data-[active]:bg-transparent data-[state=open]:bg-transparent data-[state=open]:text-[#F34213]",
+                        "h-auto px-4 py-2"
+                      )}
                     >
-                      <div className="py-2">
+                      {link.name}
+                    </NavigationMenuTrigger>
+                    <NavigationMenuContent className="border-0 bg-transparent p-0 shadow-none">
+                      <div className="w-52 p-2 bg-white rounded-xl shadow-xl border border-[#0A2463]/10">
                         {link.dropdown.map((item) => (
-                          <Link key={item.name} href={item.href} onClick={(e) => { handleLinkClick(e, item.href); setDropdownOpen(false); }} className="block px-5 py-2 text-[#0A2463] font-montserrat font-medium rounded-lg hover:bg-[#F34213]/10 hover:text-[#F34213] focus:bg-[#F34213]/20 focus:text-[#F34213] focus:outline-none">
-                            {item.name}
-                          </Link>
+                          <NavigationMenuLink key={item.name} asChild>
+                            <Link
+                              href={item.href}
+                              onClick={(e) => handleLinkClick(e, item.href)}
+                              className="block px-5 py-2 text-[#0A2463] font-montserrat font-medium rounded-lg hover:bg-[#F34213]/10 hover:text-[#F34213] focus:bg-[#F34213]/20 focus:text-[#F34213] focus:outline-none transition-colors"
+                            >
+                              {item.name}
+                            </Link>
+                          </NavigationMenuLink>
                         ))}
                       </div>
-                    </div>
-                  )}
-                </>
-              ) : (
-                <Link
-                  href={link.href}
-                  onClick={(e) => handleLinkClick(e, link.href)}
-                  className="flex items-center gap-2 text-white font-montserrat font-bold uppercase tracking-wide px-4 py-2 rounded-md transition-colors duration-200 hover:text-[#F34213] focus:text-[#F34213] focus:outline-none focus:ring-2 focus:ring-[#F34213]"
-                >
-                  {link.name}
-                </Link>
-              )}
-            </div>
-          ))}
-        </nav>
+                    </NavigationMenuContent>
+                  </>
+                ) : (
+                  <NavigationMenuLink asChild>
+                    <Link
+                      href={link.href}
+                      onClick={(e) => handleLinkClick(e, link.href)}
+                      className={cn(
+                        navigationMenuTriggerStyle(),
+                        "bg-transparent text-white font-montserrat font-bold uppercase tracking-wide hover:bg-transparent hover:text-[#F34213] focus:bg-transparent focus:text-[#F34213]",
+                        "h-auto px-4 py-2"
+                      )}
+                    >
+                      {link.name}
+                    </Link>
+                  </NavigationMenuLink>
+                )}
+              </NavigationMenuItem>
+            ))}
+          </NavigationMenuList>
+        </NavigationMenu>
 
         {/* Mobile Menu Button */}
         <div className="md:hidden">

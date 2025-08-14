@@ -2,11 +2,12 @@
 import { motion } from 'framer-motion';
 
 const guideLinks = [
-  { name: "Kalender Akademik", icon: "📅", url: "#" },
-  { name: "Buku Pedoman", icon: "📖", url: "#" },
-  { name: "Buku Kuliah", icon: "📚", url: "#" },
-  { name: "Diktat", icon: "📑", url: "#" },
-  { name: "Panduan Tugas Akhir", icon: "✍️", url: "#" },
+  { name: "Kalender Akademik", icon: "📅", url: "https://drive.google.com/drive/folders/1nnlW2uSJmWMLQGNxj4aKsWweeEStgGj-" },
+  { name: "Buku Pedoman", icon: "📖", url: "https://drive.google.com/drive/folders/1nnlW2uSJmWMLQGNxj4aKsWweeEStgGj-" },
+  { name: "Buku Kuliah", icon: "📚", url: "https://drive.google.com/drive/folders/1nJHUZne4fTw__3RjuuXZIZdAv2B8ncv6?usp=drive_link" },
+  { name: "Diktat", icon: "📑", url: "https://drive.google.com/drive/folders/1LXxAaCxinv-vrNeDIbSt9vcNQ_fHmZrH?usp=drive_link" },
+  { name: "Panduan Tugas Akhir", icon: "✍️", url: "https://drive.google.com/drive/folders/1nnlW2uSJmWMLQGNxj4aKsWweeEStgGj-" },
+  { name: "Dokumentasi Lomba Akademik", icon: "🏆", url: "https://drive.google.com/drive/folders/1daaG5ZAMKo_y2YHqQvHlJJGWnlQbqCYi" },
 ];
 
 const MKNGuide = () => {

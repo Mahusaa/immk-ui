@@ -132,44 +132,75 @@ export const AboutSection = () => {
             <h3 className="text-2xl md:text-3xl font-bold text-[#0A2463] mb-4">
               MISI IMMK UI 2025
             </h3>
-
           </div>
 
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            className="flex flex-col gap-8"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
           >
-            {misi.map((item) => (
-              <motion.div
-                key={item.title}
-                className="group relative bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-[#F34213]/20"
-                variants={itemVariants}
-                whileHover={{ y: -8 }}
-              >
-                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                  <div className="w-12 h-12 bg-gradient-to-br from-[#F34213] to-[#F47451] rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                    <span className="text-xl">{item.icon}</span>
+            {/* First row - 3 items */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {misi.slice(0, 3).map((item) => (
+                <motion.div
+                  key={item.title}
+                  className="group relative bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-[#F34213]/20"
+                  variants={itemVariants}
+                  whileHover={{ y: -8 }}
+                >
+                  <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                    <div className="w-12 h-12 bg-gradient-to-br from-[#F34213] to-[#F47451] rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                      <span className="text-xl">{item.icon}</span>
+                    </div>
                   </div>
-                </div>
 
-                <div className="pt-6 text-center">
-                  <h4 className="font-bold text-xl text-[#0A2463] mb-4 group-hover:text-[#F34213] transition-colors duration-300">
-                    {item.title}
-                  </h4>
-                  <p className="text-gray-600 leading-relaxed text-sm">
-                    {item.description}
-                  </p>
-                </div>
+                  <div className="pt-6 text-center">
+                    <h4 className="font-bold text-xl text-[#0A2463] mb-4 group-hover:text-[#F34213] transition-colors duration-300">
+                      {item.title}
+                    </h4>
+                    <p className="text-gray-600 leading-relaxed text-sm">
+                      {item.description}
+                    </p>
+                  </div>
 
-                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 w-8 h-1 bg-[#0A2463] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              </motion.div>
-            ))}
+                  <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 w-8 h-1 bg-[#0A2463] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Second row - 2 items centered */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              {misi.slice(3, 5).map((item) => (
+                <motion.div
+                  key={item.title}
+                  className="group relative bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-[#F34213]/20"
+                  variants={itemVariants}
+                  whileHover={{ y: -8 }}
+                >
+                  <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                    <div className="w-12 h-12 bg-gradient-to-br from-[#F34213] to-[#F47451] rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                      <span className="text-xl">{item.icon}</span>
+                    </div>
+                  </div>
+
+                  <div className="pt-6 text-center">
+                    <h4 className="font-bold text-xl text-[#0A2463] mb-4 group-hover:text-[#F34213] transition-colors duration-300">
+                      {item.title}
+                    </h4>
+                    <p className="text-gray-600 leading-relaxed text-sm">
+                      {item.description}
+                    </p>
+                  </div>
+
+                  <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 w-8 h-1 bg-[#0A2463] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </motion.div>
+              ))}
+            </div>
           </motion.div>
         </motion.div>
       </div>
     </section>
   );
-}; 
+};
