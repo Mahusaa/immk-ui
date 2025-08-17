@@ -6,6 +6,8 @@ import { motion } from 'framer-motion';
 export const Programs = () => {
   const programsRef = useRef(null);
   const [activeTab, setActiveTab] = useState(0);
+  const [selectedProgram, setSelectedProgram] = useState<{ title: string; fullDesc: string } | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleComingSoon = () => {
     alert('Coming Soon! Program ini akan segera hadir.');
@@ -17,6 +19,16 @@ export const Programs = () => {
 
   const handleMKNGuide = () => {
     window.open('https://immkui.com/mkn-guide', '_blank');
+  };
+
+  const handleSelengkapnya = (program: { title: string; fullDesc: string }) => {
+    setSelectedProgram(program);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedProgram(null);
   };
   const programCategories = [
     {
@@ -108,22 +120,34 @@ export const Programs = () => {
       color: "from-orange-500 to-orange-600",
       items: [
         {
-          title: "Bakti Sosial",
-          desc: "Kegiatan sosial untuk membantu masyarakat yang membutuhkan.",
-          icon: "❤️",
-          onClick: undefined
-        },
-        {
-          title: "Konsultasi Hukum",
-          desc: "Memberikan konsultasi hukum gratis kepada masyarakat.",
+          title: "Notary In Action",
+          desc: "Penyuluhan hukum mengenai Pengelolaan, Pendaftaran dan Pengalihan Hak Atas Tanah untuk memberikan pemahaman dan edukasi kepada masyarakat.",
+          fullDesc: "Merupakan kegiatan pengabdian kepada masyarakat berupa penyuluhan hukum mengenai Pengelolaan, Pendaftaran dan Pengalihan Hak Atas Tanah bertajuk Notary In Action, dengan maksud dan tujuan sebagai berikut:\n\n1. Memberikan pemaparan kepada masyarakat mengenai pengelolaan, pendaftaran dan pengalihan hak atas tanah;\n2. Memberikan edukasi kepada masyarakat untuk mencegah dan mengatasi masalah yang berhubungan dengan pengadaan sertifikat;\n3. Memberikan pemahaman dan pengetahuan mengenai isu-isu hukum terkini yang terjadi di kalangan masyarakat.",
           icon: "⚖️",
-          onClick: undefined
+          onClick: () => handleSelengkapnya({
+            title: "Notary In Action",
+            fullDesc: "Merupakan kegiatan pengabdian kepada masyarakat berupa penyuluhan hukum mengenai Pengelolaan, Pendaftaran dan Pengalihan Hak Atas Tanah bertajuk Notary In Action, dengan maksud dan tujuan sebagai berikut:\n\n1. Memberikan pemaparan kepada masyarakat mengenai pengelolaan, pendaftaran dan pengalihan hak atas tanah;\n2. Memberikan edukasi kepada masyarakat untuk mencegah dan mengatasi masalah yang berhubungan dengan pengadaan sertifikat;\n3. Memberikan pemahaman dan pengetahuan mengenai isu-isu hukum terkini yang terjadi di kalangan masyarakat."
+          })
         },
         {
-          title: "Edukasi Hukum",
-          desc: "Program edukasi hukum untuk meningkatkan literasi hukum masyarakat.",
-          icon: "📖",
-          onClick: undefined
+          title: "Donasi",
+          desc: "Kerjasama dengan Yayasan Pita Kuning Anak Indonesia sebagai wujud kepedulian bagi penderita kanker.",
+          fullDesc: "Ikatan Mahasiswa Magister Kenotariatan Universitas Indonesia Divisi bidang Pengabdian Masyarakat akan menjalin kerjasama dengan Yayasan Pita Kuning Anak Indonesia sebagai wujud nyata dari kepedulian kami sebagai Mahasiswa Magister Kenotariatan Universitas Indonesia akan pentingnya kegiatan berdonasi untuk masyarakat khususnya bagi para penderita kanker.",
+          icon: "❤️",
+          onClick: () => handleSelengkapnya({
+            title: "Donasi",
+            fullDesc: "Ikatan Mahasiswa Magister Kenotariatan Universitas Indonesia Divisi bidang Pengabdian Masyarakat akan menjalin kerjasama dengan Yayasan Pita Kuning Anak Indonesia sebagai wujud nyata dari kepedulian kami sebagai Mahasiswa Magister Kenotariatan Universitas Indonesia akan pentingnya kegiatan berdonasi untuk masyarakat khususnya bagi para penderita kanker."
+          })
+        },
+        {
+          title: "Donor Darah",
+          desc: "Kerjasama dengan PMI untuk mengadakan kegiatan donor darah sebagai bentuk kepedulian di bidang kesehatan.",
+          fullDesc: "Divisi Pengabdian Masyarakat Ikatan Mahasiswa Magister Kenotariatan Universitas Indonesia bekerja sama dengan PMI (Palang Merah Indonesia), untuk mengadakan suatu rangkaian acara Donor Darah.\n\nAcara ini merupakan wujud nyata akan pentingnya kegiatan donor darah sebagai bentuk kepedulian bagi masyarakat khususnya pada bidang kesehatan.\n\nKegiatan ini bertujuan untuk menyediakan wadah bagi masyarakat agar dapat mendonorkan darahnya serta sebagai ajang edukasi tentang pentingnya donor darah.",
+          icon: "🩸",
+          onClick: () => handleSelengkapnya({
+            title: "Donor Darah",
+            fullDesc: "Divisi Pengabdian Masyarakat Ikatan Mahasiswa Magister Kenotariatan Universitas Indonesia bekerja sama dengan PMI (Palang Merah Indonesia), untuk mengadakan suatu rangkaian acara Donor Darah.\n\nAcara ini merupakan wujud nyata akan pentingnya kegiatan donor darah sebagai bentuk kepedulian bagi masyarakat khususnya pada bidang kesehatan.\n\nKegiatan ini bertujuan untuk menyediakan wadah bagi masyarakat agar dapat mendonorkan darahnya serta sebagai ajang edukasi tentang pentingnya donor darah."
+          })
         }
       ]
     }
@@ -253,7 +277,7 @@ export const Programs = () => {
                             <span>
                               {item.onClick === handleComingSoon ? 'Coming Soon' :
                                 item.onClick === handleNotarisMasaKini ? 'Kunjungi Instagram' :
-                                  'Selengkapnya'}
+                                  item.onClick ? 'Selengkapnya' : 'Selengkapnya'}
                             </span>
                             {item.onClick && (
                               <svg
@@ -276,6 +300,43 @@ export const Programs = () => {
           ))}
         </motion.div>
       </div>
+
+      {/* Modal for Program Details */}
+      {isModalOpen && selectedProgram && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[80vh] overflow-hidden"
+          >
+            {/* Modal Header */}
+            <div className="bg-gradient-to-r from-[#0A2463] to-[#1a3a8f] p-6 text-white">
+              <div className="flex items-center justify-between">
+                <h3 className="text-2xl font-bold">{selectedProgram.title}</h3>
+                <button
+                  onClick={closeModal}
+                  className="text-white/70 hover:text-white transition-colors p-2"
+                  aria-label="Close modal"
+                >
+                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            {/* Modal Content */}
+            <div className="p-6 overflow-y-auto max-h-[60vh]">
+              <div className="prose prose-lg max-w-none">
+                <div className="whitespace-pre-line text-gray-700 leading-relaxed">
+                  {selectedProgram.fullDesc}
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      )}
     </section>
   );
 };
