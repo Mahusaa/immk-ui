@@ -8,7 +8,7 @@ const executiveBoard = [
   {
     name: 'Naufal Nedja Deandra, S.H.',
     position: 'Ketua',
-    image: '/ketua-new.png',
+    image: '/ketua-new-1.png',
   },
   {
     name: 'Tazkya Rizqyta Radhwa, S.H.',
