@@ -16,23 +16,26 @@ import { cn } from "@/lib/utils"
 const aboutDropdown = [
   { name: 'Visi & Misi', href: '/#about' },
   { name: 'Struktur Organisasi', href: '/organization' },
+];
+
+const programsDropdown = [
   { name: 'Panduan MKN UI', href: '/mkn-guide' },
 ];
 
 const navLinks = [
   { name: 'Beranda', href: '/' },
   { name: 'Tentang Kami', href: '#about', dropdown: aboutDropdown },
-  { name: 'Program', href: '/#programs' },
+  { name: 'Program', href: '/#programs', dropdown: programsDropdown },
   { name: 'Galeri', href: '/#gallery' },
 ];
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
   // Close dropdown when menu closes
   useEffect(() => {
-    if (!menuOpen) setDropdownOpen(false);
+    if (!menuOpen) setOpenDropdown(null);
   }, [menuOpen]);
 
   // Handle link click (for smooth scroll and closing menu)
@@ -40,7 +43,7 @@ export default function Navbar() {
     if (href.startsWith('#')) {
       e.preventDefault();
       setMenuOpen(false);
-      setDropdownOpen(false);
+      setOpenDropdown(null);
       setTimeout(() => {
         const targetId = href.substring(1);
         const targetElement = document.getElementById(targetId);
@@ -55,7 +58,7 @@ export default function Navbar() {
       }, 100);
     } else {
       setMenuOpen(false);
-      setDropdownOpen(false);
+      setOpenDropdown(null);
     }
   };
 
@@ -150,39 +153,39 @@ export default function Navbar() {
             <div className="space-y-2">
               {navLinks.map((link) => (
                 <div key={link.name} className="w-full">
-                  {link.dropdown ? (
-                    <>
-                      <button
-                        onClick={() => setDropdownOpen(!dropdownOpen)}
-                        aria-expanded={dropdownOpen}
-                        className="w-full flex items-center justify-between px-4 py-4 text-white font-montserrat font-semibold text-lg uppercase tracking-wide rounded-xl bg-white/5 hover:bg-[#F34213]/20 active:bg-[#F34213]/30 focus:outline-none focus:ring-2 focus:ring-[#F34213] transition-all duration-200 border border-white/10 hover:border-[#F34213]/30"
-                      >
-                        <span className="flex items-center space-x-3">
-                          <span className="w-2 h-2 bg-[#F34213] rounded-full"></span>
-                          <span>{link.name}</span>
-                        </span>
-                        <svg className={`w-5 h-5 fill-current transition-transform duration-300 ${dropdownOpen ? 'rotate-180' : ''}`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                          <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                        </svg>
-                      </button>
+                                     {link.dropdown ? (
+                     <>
+                       <button
+                         onClick={() => setOpenDropdown(openDropdown === link.name ? null : link.name)}
+                         aria-expanded={openDropdown === link.name}
+                         className="w-full flex items-center justify-between px-4 py-4 text-white font-montserrat font-semibold text-lg uppercase tracking-wide rounded-xl bg-white/5 hover:bg-[#F34213]/20 active:bg-[#F34213]/30 focus:outline-none focus:ring-2 focus:ring-[#F34213] transition-all duration-200 border border-white/10 hover:border-[#F34213]/30"
+                       >
+                         <span className="flex items-center space-x-3">
+                           <span className="w-2 h-2 bg-[#F34213] rounded-full"></span>
+                           <span>{link.name}</span>
+                         </span>
+                         <svg className={`w-5 h-5 fill-current transition-transform duration-300 ${openDropdown === link.name ? 'rotate-180' : ''}`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                           <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                         </svg>
+                       </button>
 
-                      {/* Dropdown Items with Animation */}
-                      <div className={`overflow-hidden transition-all duration-300 ease-in-out ${dropdownOpen ? 'max-h-96 opacity-100 mt-3' : 'max-h-0 opacity-0'}`}>
-                        <div className="bg-[#183B6B]/40 backdrop-blur-sm rounded-xl border border-white/10 p-2">
-                          {link.dropdown.map((item) => (
-                            <Link
-                              key={item.name}
-                              href={item.href}
-                              onClick={(e) => { handleLinkClick(e, item.href); setDropdownOpen(false); }}
-                              className="flex items-center space-x-3 px-4 py-3 text-white/90 font-montserrat font-medium text-base rounded-lg hover:bg-[#F34213]/15 hover:text-white active:bg-[#F34213]/25 focus:bg-[#F34213]/20 focus:text-white focus:outline-none transition-all duration-200"
-                            >
-                              <span className="w-1.5 h-1.5 bg-white/60 rounded-full"></span>
-                              <span>{item.name}</span>
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-                    </>
+                       {/* Dropdown Items with Animation */}
+                       <div className={`overflow-hidden transition-all duration-300 ease-in-out ${openDropdown === link.name ? 'max-h-96 opacity-100 mt-3' : 'max-h-0 opacity-0'}`}>
+                         <div className="bg-[#183B6B]/40 backdrop-blur-sm rounded-xl border border-white/10 p-2">
+                           {link.dropdown.map((item) => (
+                             <Link
+                               key={item.name}
+                               href={item.href}
+                               onClick={(e) => { handleLinkClick(e, item.href); setOpenDropdown(null); }}
+                               className="flex items-center space-x-3 px-4 py-3 text-white/90 font-montserrat font-medium text-base rounded-lg hover:bg-[#F34213]/15 hover:text-white active:bg-[#F34213]/25 focus:bg-[#F34213]/20 focus:text-white focus:outline-none transition-all duration-200"
+                             >
+                               <span className="w-1.5 h-1.5 bg-white/60 rounded-full"></span>
+                               <span>{item.name}</span>
+                             </Link>
+                           ))}
+                         </div>
+                       </div>
+                     </>
                   ) : (
                     <Link
                       href={link.href}

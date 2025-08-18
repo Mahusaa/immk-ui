@@ -19,7 +19,7 @@ const executiveBoard = [
 
 const kebendaharaan = [
   {
-    name: 'Risyalma Fadia, S.H.',
+    name: 'Risyalma Fadia Hasan, S.H.',
     position: 'Bendahara I',
     image: '/bendum-1.png',
   },
@@ -37,7 +37,7 @@ const positionMap: Record<string, string> = {
 
 const manajemenBoard = [
   {
-    name: 'Salisa Emmirani Azka, S.H.',
+    name: 'Alisa Emmirani Azka, S.H.',
     position: 'Sekretaris I',
     image: '/sekt-1.png',
   },
@@ -51,12 +51,12 @@ const manajemenBoard = [
 const departemenAkademik = [
   {
     name: 'Mutiara Husna Wahono, S.H.',
-    position: 'Kepala Depatemen Akademik',
+    position: 'Kepala Departemen Akademik',
     image: '/kadep-akademik.png',
   },
   {
     name: 'Laurensia Lefina Mulauli, S.H.',
-    position: 'Wakil Kepala Depatemen Akademik',
+    position: 'Wakil Kepala Departemen Akademik',
     image: '/wakadep-akademik.png',
   },
 ];
@@ -81,12 +81,12 @@ const divisiAkademik = [
 const departemenInternal = [
   {
     name: 'M. Alfareza Rezwandy, S.H.',
-    position: 'Kepala Depatemen Internal',
+    position: 'Kepala Departemen Internal',
     image: '/kadep-internal.png',
   },
   {
     name: 'Tarisha Jasmine, S.H.',
-    position: 'Wakil Kepala Depatemen Internal',
+    position: 'Wakil Kepala Departemen Internal',
     image: '/wakadep-internal.png',
   },
 ];
@@ -94,12 +94,12 @@ const departemenInternal = [
 const departemenEksternal = [
   {
     name: 'Kevin Arya Muhammad, S.H.',
-    position: 'Kepala Depatemen Eksternal',
+    position: 'Kepala Departemen Eksternal',
     image: '/kadep-eksternal.png',
   },
   {
     name: 'Nabila Sabrina Riza, S.H.',
-    position: 'Wakil Kepala Depatemen Eksternal',
+    position: 'Wakil Kepala Departemen Eksternal',
     image: '/wakadep-eksternal.png',
   },
 ];
@@ -150,7 +150,7 @@ const divisiFundraising = [
     name: 'Divisi Fundraising',
     kepala: 'Nabilla Oktafiana, S.H.',
     kepalaImage: '/kadiv-fundraising.png',
-    wakil: 'Syarah Safitri, S.H.',
+    wakil: 'Syarah Safithri, S.H.',
     wakilImage: '/wakadiv-fundraising.png',
   },
 ];
@@ -309,7 +309,7 @@ export const OrganizationStructure = () => {
                           />
                         </div>
                         <span className="text-[11px] font-semibold text-[#F34213] uppercase tracking-wide font-montserrat mb-1">
-                          Wakil Kepala
+                          Wakil Kepala Divisi
                         </span>
                         <span className="text-sm text-black font-montserrat text-center break-words">
                           {wakil}
@@ -398,7 +398,7 @@ export const OrganizationStructure = () => {
                           />
                         </div>
                         <span className="text-[11px] font-semibold text-[#F34213] uppercase tracking-wide font-montserrat mb-1">
-                          Wakil Kepala
+                          Wakil Kepala Divisi
                         </span>
                         <span className="text-sm text-black font-montserrat text-center break-words">
                           {wakil}
@@ -488,7 +488,7 @@ export const OrganizationStructure = () => {
                             />
                           </div>
                           <span className="text-xs font-semibold text-[#F34213] uppercase tracking-wide font-montserrat mb-1">
-                            Wakil Kepala
+                            Wakil Kepala Divisi
                           </span>
                           <span className="text-sm text-black font-montserrat text-center break-words">
                             {wakil}
@@ -529,7 +529,7 @@ export const OrganizationStructure = () => {
                             />
                           </div>
                           <span className="text-xs font-semibold text-[#F34213] uppercase tracking-wide font-montserrat mb-1">
-                            Wakil Kepala
+                            Wakil Kepala Divisi
                           </span>
                           <span className="text-sm text-black font-montserrat text-center break-words">
                             {wakil}
@@ -618,7 +618,7 @@ export const OrganizationStructure = () => {
                           />
                         </div>
                         <span className="text-xs font-semibold text-[#F34213] uppercase tracking-wide font-montserrat mb-1">
-                          Wakil Kepala
+                          Wakil Kepala Divisi
                         </span>
                         <span className="text-sm text-black font-montserrat text-center break-words">
                           {wakil}
