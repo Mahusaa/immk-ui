@@ -2,16 +2,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu"
-import { cn } from "@/lib/utils"
 
 const aboutDropdown = [
   { name: 'Visi & Misi', href: '/#about' },
@@ -19,7 +9,7 @@ const aboutDropdown = [
 ];
 
 const programsDropdown = [
-  { name: 'Panduan MKN UI', href: '/mkn-guide' },
+  { name: 'MKN UI Guide', href: '/mkn-guide' },
 ];
 
 const navLinks = [
@@ -71,56 +61,49 @@ export default function Navbar() {
           <span className="font-bold text-xl text-white font-montserrat uppercase tracking-wide ml-1 sm:ml-2">IMMK UI</span>
         </Link>
 
-        {/* Desktop Nav with shadcn NavigationMenu */}
-        <NavigationMenu className="hidden md:flex">
-          <NavigationMenuList>
+        {/* Desktop Nav with Custom Dropdown */}
+        <nav className="hidden md:flex">
+          <div className="flex items-center space-x-1">
             {navLinks.map((link) => (
-              <NavigationMenuItem key={link.name}>
+              <div key={link.name} className="relative group">
                 {link.dropdown ? (
                   <>
-                    <NavigationMenuTrigger
-                      className={cn(
-                        "bg-transparent text-white font-montserrat font-bold uppercase tracking-wide hover:bg-transparent hover:text-[#F34213] focus:bg-transparent focus:text-[#F34213] data-[active]:bg-transparent data-[state=open]:bg-transparent data-[state=open]:text-[#F34213]",
-                        "h-auto px-4 py-2"
-                      )}
+                    <button
+                      className="bg-transparent text-white font-montserrat font-bold uppercase tracking-wide hover:text-[#F34213] focus:text-[#F34213] focus:outline-none transition-colors h-auto px-4 py-2 flex items-center space-x-1"
                     >
-                      {link.name}
-                    </NavigationMenuTrigger>
-                    <NavigationMenuContent className="border-0 bg-transparent p-0 shadow-none">
-                      <div className="w-52 p-2 bg-white rounded-xl shadow-xl border border-[#0A2463]/10">
-                        {link.dropdown.map((item) => (
-                          <NavigationMenuLink key={item.name} asChild>
-                            <Link
-                              href={item.href}
-                              onClick={(e) => handleLinkClick(e, item.href)}
-                              className="block px-5 py-2 text-[#0A2463] font-montserrat font-medium rounded-lg hover:bg-[#F34213]/10 hover:text-[#F34213] focus:bg-[#F34213]/20 focus:text-[#F34213] focus:outline-none transition-colors"
-                            >
-                              {item.name}
-                            </Link>
-                          </NavigationMenuLink>
-                        ))}
-                      </div>
-                    </NavigationMenuContent>
+                      <span>{link.name}</span>
+                      <svg className="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                        <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                      </svg>
+                    </button>
+
+                    {/* Custom Dropdown */}
+                    <div className="absolute top-full left-0 mt-2 w-52 p-2 bg-white rounded-xl shadow-xl border border-[#0A2463]/10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                      {link.dropdown.map((item) => (
+                        <Link
+                          key={item.name}
+                          href={item.href}
+                          onClick={(e) => handleLinkClick(e, item.href)}
+                          className="block px-5 py-2 text-[#0A2463] font-montserrat font-medium rounded-lg hover:bg-[#F34213]/10 hover:text-[#F34213] focus:bg-[#F34213]/20 focus:text-[#F34213] focus:outline-none transition-colors"
+                        >
+                          {item.name}
+                        </Link>
+                      ))}
+                    </div>
                   </>
                 ) : (
-                  <NavigationMenuLink asChild>
-                    <Link
-                      href={link.href}
-                      onClick={(e) => handleLinkClick(e, link.href)}
-                      className={cn(
-                        navigationMenuTriggerStyle(),
-                        "bg-transparent text-white font-montserrat font-bold uppercase tracking-wide hover:bg-transparent hover:text-[#F34213] focus:bg-transparent focus:text-[#F34213]",
-                        "h-auto px-4 py-2"
-                      )}
-                    >
-                      {link.name}
-                    </Link>
-                  </NavigationMenuLink>
+                  <Link
+                    href={link.href}
+                    onClick={(e) => handleLinkClick(e, link.href)}
+                    className="bg-transparent text-white font-montserrat font-bold uppercase tracking-wide hover:text-[#F34213] focus:text-[#F34213] focus:outline-none transition-colors h-auto px-4 py-2 block"
+                  >
+                    {link.name}
+                  </Link>
                 )}
-              </NavigationMenuItem>
+              </div>
             ))}
-          </NavigationMenuList>
-        </NavigationMenu>
+          </div>
+        </nav>
 
         {/* Mobile Menu Button */}
         <div className="md:hidden">
@@ -153,39 +136,39 @@ export default function Navbar() {
             <div className="space-y-2">
               {navLinks.map((link) => (
                 <div key={link.name} className="w-full">
-                                     {link.dropdown ? (
-                     <>
-                       <button
-                         onClick={() => setOpenDropdown(openDropdown === link.name ? null : link.name)}
-                         aria-expanded={openDropdown === link.name}
-                         className="w-full flex items-center justify-between px-4 py-4 text-white font-montserrat font-semibold text-lg uppercase tracking-wide rounded-xl bg-white/5 hover:bg-[#F34213]/20 active:bg-[#F34213]/30 focus:outline-none focus:ring-2 focus:ring-[#F34213] transition-all duration-200 border border-white/10 hover:border-[#F34213]/30"
-                       >
-                         <span className="flex items-center space-x-3">
-                           <span className="w-2 h-2 bg-[#F34213] rounded-full"></span>
-                           <span>{link.name}</span>
-                         </span>
-                         <svg className={`w-5 h-5 fill-current transition-transform duration-300 ${openDropdown === link.name ? 'rotate-180' : ''}`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                           <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                         </svg>
-                       </button>
+                  {link.dropdown ? (
+                    <>
+                      <button
+                        onClick={() => setOpenDropdown(openDropdown === link.name ? null : link.name)}
+                        aria-expanded={openDropdown === link.name}
+                        className="w-full flex items-center justify-between px-4 py-4 text-white font-montserrat font-semibold text-lg uppercase tracking-wide rounded-xl bg-white/5 hover:bg-[#F34213]/20 active:bg-[#F34213]/30 focus:outline-none focus:ring-2 focus:ring-[#F34213] transition-all duration-200 border border-white/10 hover:border-[#F34213]/30"
+                      >
+                        <span className="flex items-center space-x-3">
+                          <span className="w-2 h-2 bg-[#F34213] rounded-full"></span>
+                          <span>{link.name}</span>
+                        </span>
+                        <svg className={`w-5 h-5 fill-current transition-transform duration-300 ${openDropdown === link.name ? 'rotate-180' : ''}`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                          <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                        </svg>
+                      </button>
 
-                       {/* Dropdown Items with Animation */}
-                       <div className={`overflow-hidden transition-all duration-300 ease-in-out ${openDropdown === link.name ? 'max-h-96 opacity-100 mt-3' : 'max-h-0 opacity-0'}`}>
-                         <div className="bg-[#183B6B]/40 backdrop-blur-sm rounded-xl border border-white/10 p-2">
-                           {link.dropdown.map((item) => (
-                             <Link
-                               key={item.name}
-                               href={item.href}
-                               onClick={(e) => { handleLinkClick(e, item.href); setOpenDropdown(null); }}
-                               className="flex items-center space-x-3 px-4 py-3 text-white/90 font-montserrat font-medium text-base rounded-lg hover:bg-[#F34213]/15 hover:text-white active:bg-[#F34213]/25 focus:bg-[#F34213]/20 focus:text-white focus:outline-none transition-all duration-200"
-                             >
-                               <span className="w-1.5 h-1.5 bg-white/60 rounded-full"></span>
-                               <span>{item.name}</span>
-                             </Link>
-                           ))}
-                         </div>
-                       </div>
-                     </>
+                      {/* Dropdown Items with Animation */}
+                      <div className={`overflow-hidden transition-all duration-300 ease-in-out ${openDropdown === link.name ? 'max-h-96 opacity-100 mt-3' : 'max-h-0 opacity-0'}`}>
+                        <div className="bg-[#183B6B]/40 backdrop-blur-sm rounded-xl border border-white/10 p-2">
+                          {link.dropdown.map((item) => (
+                            <Link
+                              key={item.name}
+                              href={item.href}
+                              onClick={(e) => { handleLinkClick(e, item.href); setOpenDropdown(null); }}
+                              className="flex items-center space-x-3 px-4 py-3 text-white/90 font-montserrat font-medium text-base rounded-lg hover:bg-[#F34213]/15 hover:text-white active:bg-[#F34213]/25 focus:bg-[#F34213]/20 focus:text-white focus:outline-none transition-all duration-200"
+                            >
+                              <span className="w-1.5 h-1.5 bg-white/60 rounded-full"></span>
+                              <span>{item.name}</span>
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    </>
                   ) : (
                     <Link
                       href={link.href}
