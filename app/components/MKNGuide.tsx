@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 const guideLinks = [
   { name: "Kalender Akademik", icon: "📅", url: "https://drive.google.com/file/d/113pAwkTJ2DxRENrBFFU_Vxi3-HGJdhnA/view?usp=sharing" },
   { name: "Buku Pedoman Akademik", icon: "📖", url: "https://drive.google.com/file/d/1psNO8xrNJ9Ek2e21o8LcJjIH_Q3Rzo7q/view?usp=sharing" },
-  { name: "Materi Kuliah", icon: "📚", url: "https://drive.google.com/drive/folders/1nJHUZne4fTw__3RjuuXZIZdAv2B8ncv6?usp=drive_link" },
+  { name: "Materi Perkuliahan", icon: "📚", url: "https://drive.google.com/drive/folders/1nJHUZne4fTw__3RjuuXZIZdAv2B8ncv6?usp=drive_link" },
   { name: "Diktat", icon: "📑", url: "https://drive.google.com/drive/folders/1LXxAaCxinv-vrNeDIbSt9vcNQ_fHmZrH?usp=drive_link" },
   { name: "Buku Pedoman Tugas Akhir", icon: "✍️", url: "https://drive.google.com/file/d/1QeIQYEI6OO5LCpQ3xODC9zlzjN00oJ8t/view?usp=sharing" },
   { name: "Dokumentasi Lomba Akademik", icon: "🏆", url: "https://drive.google.com/drive/folders/1daaG5ZAMKo_y2YHqQvHlJJGWnlQbqCYi" },
