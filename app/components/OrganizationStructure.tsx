@@ -76,6 +76,13 @@ const divisiAkademik = [
     wakil: 'Noviantika Agustine, S.H.',
     wakilImage: '/wakadiv-pengkar.png',
   },
+  {
+    name: 'Divisi Advokasi',
+    kepala: 'Sasqia Syaidatina Aisya, S.H.',
+    kepalaImage: '/kadiv-advo.jpg',
+    wakil: 'Gloria Beatrix, S.H.',
+    wakilImage: '/wakadiv-advo.png',
+  },
 ];
 
 const departemenInternal = [
@@ -137,11 +144,11 @@ const divisiInternal = [
     wakilImage: ['/wakadiv-gabon.png'],
   },
   {
-    name: 'Divisi Media dan Advokasi (Medvo)',
+    name: 'Divisi Media Kreatif',
     kepala: 'Tabitha Adischa, S.H.',
     kepalaImage: '/kadiv-medvo.png',
-    wakil: ['Addia Nova Kayaka, S.H.', 'Gloria Beatrix, S.H.'],
-    wakilImage: ['/wakadiv-medvo-1.png', '/wakadiv-medvo-2.png'],
+    wakil: ['Addia Nova Kayaka, S.H.'],
+    wakilImage: ['/wakadiv-medvo-1.png'],
   },
 ];
 
@@ -269,7 +276,7 @@ export const OrganizationStructure = () => {
             {divisiFundraising.map((divisi) => (
               <div
                 key={divisi.name}
-                className="relative flex flex-col items-center justify-between bg-[#F2F2F2] rounded-xl shadow-sm border border-[#0A2463]/15 min-h-[320px] w-full max-w-md p-6 pt-7 pb-7 transition-all"
+                className="relative flex flex-col items-center justify-between bg-[#F2F2F2] rounded-xl shadow-sm border border-[#0A2463]/15 min-h-[320px] w-full max-w-sm lg:max-w-md p-4 sm:p-6 pt-7 pb-7 transition-all"
               >
                 {/* Accent bar */}
                 <div className="absolute top-0 left-0 w-full h-1 rounded-t-xl bg-[#F34213]" />
@@ -352,13 +359,13 @@ export const OrganizationStructure = () => {
         ))}
       </div>
       {/* Divisi under Departemen Akademik */}
-      <div className="w-full max-w-5xl mx-auto">
+      <div className="w-full max-w-6xl mx-auto">
         <div className="bg-[#F2F2F2] rounded-xl p-4 sm:p-6 lg:p-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8 justify-items-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 justify-items-center">
             {divisiAkademik.map((divisi) => (
               <div
                 key={divisi.name}
-                className="relative flex flex-col items-center justify-between bg-[#F2F2F2] rounded-xl shadow-sm border border-[#0A2463]/15 min-h-[320px] w-full max-w-md p-6 pt-7 pb-7 transition-all"
+                className="relative flex flex-col items-center justify-between bg-[#F2F2F2] rounded-xl shadow-sm border border-[#0A2463]/15 min-h-[320px] w-full max-w-sm lg:max-w-md p-4 sm:p-6 pt-7 pb-7 transition-all"
               >
                 {/* Accent bar */}
                 <div className="absolute top-0 left-0 w-full h-1 rounded-t-xl bg-[#F34213]" />
@@ -439,13 +446,13 @@ export const OrganizationStructure = () => {
         ))}
       </div>
       {/* Divisi under Departemen Internal */}
-      <div className="w-full max-w-5xl mx-auto">
+      <div className="w-full max-w-6xl mx-auto">
         <div className="bg-[#F2F2F2] rounded-xl p-4 sm:p-6 lg:p-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 justify-items-center">
             {divisiInternal.map((divisi) => (
               <div
                 key={divisi.name}
-                className="relative flex flex-col items-center justify-between bg-[#F2F2F2] rounded-xl shadow-sm border border-[#0A2463]/15 min-h-[320px] w-full max-w-md p-6 pt-7 pb-7 transition-all"
+                className="relative flex flex-col items-center justify-between bg-[#F2F2F2] rounded-xl shadow-sm border border-[#0A2463]/15 min-h-[320px] w-full max-w-sm lg:max-w-md p-4 sm:p-6 pt-7 pb-7 transition-all"
               >
                 {/* Accent bar */}
                 <div className="absolute top-0 left-0 w-full h-1 rounded-t-xl bg-[#F34213]" />
@@ -572,13 +579,13 @@ export const OrganizationStructure = () => {
         ))}
       </div>
       {/* Divisi under Departemen Eksternal */}
-      <div className="w-full max-w-3xl mx-auto">
+      <div className="w-full max-w-4xl mx-auto">
         <div className="bg-[#F2F2F2] rounded-xl p-4 sm:p-6 lg:p-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8 justify-items-center">
             {divisiEksternal.map((divisi) => (
               <div
                 key={divisi.name}
-                className="relative flex flex-col items-center justify-between bg-[#F2F2F2] rounded-xl shadow-sm border border-[#0A2463]/15 min-h-[320px] w-full max-w-md p-6 pt-7 pb-7 transition-all"
+                className="relative flex flex-col items-center justify-between bg-[#F2F2F2] rounded-xl shadow-sm border border-[#0A2463]/15 min-h-[320px] w-full max-w-sm lg:max-w-md p-4 sm:p-6 pt-7 pb-7 transition-all"
               >
                 {/* Accent bar */}
                 <div className="absolute top-0 left-0 w-full h-1 rounded-t-xl bg-[#F34213]" />
