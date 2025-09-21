@@ -78,10 +78,10 @@ const divisiAkademik = [
   },
   {
     name: 'Divisi Advokasi',
-    kepala: 'Sasqia Syaidatina Aisya, S.H.',
-    kepalaImage: '/kadiv-advo.jpg',
-    wakil: 'Gloria Beatrix, S.H.',
-    wakilImage: '/wakadiv-advo.png',
+    kepala: 'Gloria Beatrix, S.H.',
+    kepalaImage: '/wakadiv-advo.png',
+    wakil: 'Sasqia Syaidatina Aisya, S.H.',
+    wakilImage: '/kadiv-advo.jpg',
   },
 ];
 
