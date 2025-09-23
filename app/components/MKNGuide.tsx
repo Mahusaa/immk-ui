@@ -7,6 +7,7 @@ const guideLinks = [
   { name: "Materi Perkuliahan", icon: "📚", url: "https://drive.google.com/drive/folders/1nJHUZne4fTw__3RjuuXZIZdAv2B8ncv6?usp=drive_link" },
   { name: "Diktat", icon: "📑", url: "https://drive.google.com/drive/folders/1LXxAaCxinv-vrNeDIbSt9vcNQ_fHmZrH?usp=drive_link" },
   { name: "Buku Pedoman Tugas Akhir", icon: "✍️", url: "https://drive.google.com/file/d/1QeIQYEI6OO5LCpQ3xODC9zlzjN00oJ8t/view?usp=sharing" },
+  { name: "Buku Panduan Penulisan Karya Ilmiah", icon: "📝", url: "https://drive.google.com/file/d/1vcb_GB_54nSR-iqn4LTiWvMeJH2St2zw/view?usp=drivesdk" },
 ];
 
 const MKNGuide = () => {
