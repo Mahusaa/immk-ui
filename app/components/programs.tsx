@@ -21,6 +21,10 @@ export const Programs = () => {
     window.open('https://immkui.com/mkn-guide', '_blank');
   };
 
+  const handlePekanNotaris = () => {
+    window.open('/pekannotaris', '_self');
+  };
+
   const handleSelengkapnya = (program: { title: string; fullDesc: string }) => {
     setSelectedProgram(program);
     setIsModalOpen(true);
@@ -81,7 +85,7 @@ export const Programs = () => {
           title: "Pekan Notaris",
           desc: "Serangkaian acara selama seminggu penuh untuk memperingati hari notaris.",
           icon: "📅",
-          onClick: undefined
+          onClick: handlePekanNotaris
         }
       ]
     },
